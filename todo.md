@@ -3,5 +3,5 @@
 [3]: Bladeknight (red samuro) needs to be disabled, not sure how to fix. :+1:  
 [4]: -Code broken, replace the system with hard-coded names and trigger dialog on command if name match.  
 
-[^1]: Trig_Revive_CREEP_Actions    
-[^2]: A00R    
+[^1]: Trigger ID: gg_trg_Revive_CREEP    
+[^2]: Ability ID: A00R    

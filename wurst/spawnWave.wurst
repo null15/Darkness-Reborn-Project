@@ -257,8 +257,8 @@ public function waves()
     udg_FinalBoss[31]='n04P'
 
 public function lastThreebosses()
-    var timer_eliteBoss = CreateTimer()
-    var timer_eliteBoss_dialog = CreateTimerDialog(timer_eliteBoss)
+    let timer_eliteBoss = CreateTimer()
+    let timer_eliteBoss_dialog = CreateTimerDialog(timer_eliteBoss)
 
     destroyBossTimer()
     doAfter(0.01) ->
@@ -275,12 +275,6 @@ public function lastThreebosses()
 
     doAfter(80) ->
 
-        timer_eliteBoss.destr()
-        timer_eliteBoss_dialog.destr()
-
-        timer_eliteBoss = CreateTimer()
-        timer_eliteBoss_dialog = CreateTimerDialog(timer_eliteBoss)
-
         TimerStart(timer_eliteBoss, 100, false, null)
         TimerDialogDisplay(timer_eliteBoss_dialog, true)
         TimerDialogSetTitle(timer_eliteBoss_dialog, "Cronus incoming: ")
@@ -291,12 +285,6 @@ public function lastThreebosses()
         IssuePointOrderLocBJ(boss1,"attack",udg_AAttackWave[4])
 
         doAfter(100) ->
-
-            timer_eliteBoss.destr()
-            timer_eliteBoss_dialog.destr()
-
-            timer_eliteBoss = CreateTimer()
-            timer_eliteBoss_dialog = CreateTimerDialog(timer_eliteBoss)
 
             TimerStart(timer_eliteBoss, 120, false, null)
             TimerDialogDisplay(timer_eliteBoss_dialog, true)
@@ -315,9 +303,6 @@ public function lastThreebosses()
                 DisplayTimedTextToForce(GetPlayersAll(),15,"Elite Boss |cffa81d1dShadow Infernal|r has been summoned")
                 boss3 = CreateUnitAtLoc(Player(11), udg_FinalBoss[31], GetRectCenter(gg_rct_Region_midLane), bj_UNIT_FACING)
                 IssuePointOrderLocBJ(boss3,"attack",udg_AAttackWave[4])
-
-
-
 
 
 

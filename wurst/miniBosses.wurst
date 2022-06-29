@@ -1,0 +1,162 @@
+package miniBosses
+
+int low1 = 1
+int low2 = 6
+int low3 = 11
+int low4 = 16
+int low5 = 21
+int low6 = 26
+int low7 = 31
+int low8 = 36
+int low9 = 41
+int low10 = 46
+int low11 = 51
+int low12 = 56
+int low13 = 58
+int low14 = 63
+int low15 = 67
+int low16 = 73
+int low17 = 78
+int low18 = 86
+int low19 = 91
+int low20 = 96
+int low21 = 101
+
+int high1 = 5
+int high2 = 10
+int high3 = 15
+int high4 = 20
+int high5 = 25
+int high6 = 30
+int high7 = 35
+int high8 = 40
+int high9 = 45
+int high10 = 50
+int high11 = 55
+int high12 = 62
+int high13 = 67
+int high14 = 72
+int high15 = 77
+int high16 = 83
+int high17 = 90
+int high18 = 95
+int high19 = 100
+int high20 = 105
+
+init
+
+public function calcHighBoss(int highBoss) returns integer
+
+    if (highBoss == 5)
+        return high6
+    else if (highBoss == 10)
+        return low13
+    else if (highBoss == 15)
+        return high16
+    else if (highBoss == 20)
+        return high20
+
+    return 5
+
+public function calcLowBoss(int lowBoss) returns integer
+
+    if (lowBoss == 5)
+        return low6
+    else if (lowBoss == 10)
+        return low12
+    else if (lowBoss == 15)
+        return low18
+    else if (lowBoss == 20)
+        return low21
+
+    return 5
+
+public function calcHigh(int highNum) returns integer
+
+    if (highNum == 1)
+        return high1
+    else if (highNum == 2)
+        return high2
+    else if (highNum == 3)
+        return high3
+    else if (highNum == 4)
+        return high4
+    else if (highNum == 5)
+        return high5
+    else if (highNum == 6)
+        return high6
+    else if (highNum == 7)
+        return high7
+    else if (highNum == 8)
+        return high8
+    else if (highNum == 9)
+        return high9
+    else if (highNum == 10)
+        return high10
+    else if (highNum == 11)
+        return high11
+    else if (highNum == 12)
+        return high12
+    else if (highNum == 13)
+        return high13
+    else if (highNum == 14)
+        return high14
+    else if (highNum == 15)
+        return high15
+    else if (highNum == 16)
+        return high16
+    else if (highNum == 17)
+        return high17
+    else if (highNum == 18)
+        return high18
+    else if (highNum == 19)
+        return high19
+    else if (highNum == 20)
+        return high20
+
+    return 5
+
+public function calcLow(int lowNum) returns integer
+
+    if (lowNum == 1)
+        return low1
+    else if (lowNum == 2)
+        return low2
+    else if (lowNum == 3)
+        return low3
+    else if (lowNum == 4)
+        return low4
+    else if (lowNum == 5)
+        return low5
+    else if (lowNum == 6)
+        return low6
+    else if (lowNum == 7)
+        return low7
+    else if (lowNum == 8)
+        return low8
+    else if (lowNum == 9)
+        return low9
+    else if (lowNum == 10)
+        return low10
+    else if (lowNum == 11)
+        return low11
+    else if (lowNum == 12)
+        return low12
+    else if (lowNum == 13)
+        return low13
+    else if (lowNum == 14)
+        return low14
+    else if (lowNum == 15)
+        return low15
+    else if (lowNum == 16)
+        return low16
+    else if (lowNum == 17)
+        return low17
+    else if (lowNum == 18)
+        return low18
+    else if (lowNum == 19)
+        return low19
+    else if (lowNum == 20)
+        return low20
+
+    return 5

@@ -1,0 +1,135 @@
+package DragonDreadlordTimer
+
+import ClosureTimers
+import ItemDrops
+
+rect gg_rct_Region_Dreadlord=Rect(7008.0,2656.0,7168.0,2816.0)
+rect gg_rct_Region_Dragon=Rect(9792.0,-1248.0,10112.0,-960.0)
+
+integer array DRAGON_TYPE = []
+integer dragonIndex = 0
+
+init
+
+    DRAGON_TYPE[0] = 'u005'
+    DRAGON_TYPE[1] = 'u006'
+    DRAGON_TYPE[2] = 'u007'
+    DRAGON_TYPE[3] = 'u008'
+    DRAGON_TYPE[4] = 'u009'
+    DRAGON_TYPE[5] = 'u00R'
+    DRAGON_TYPE[6] = 'u00S'
+    DRAGON_TYPE[7] = 'u00T'
+
+    doAfter(15) -> 
+        spawnDreadlord()
+        dragonSpawn(0)
+
+function spawnDreadlord()
+    let u = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U00U', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
+    SetHeroLevelBJ(u,80,false)
+    CreateTrigger()
+    ..registerUnitEvent(u, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        let dreadlordTimer = CreateTimer()
+        let dreadlordTimerDialog = CreateTimerDialog(dreadlordTimer)
+        createItem(items[87], GetTriggerUnit().getPos())
+        createItem(items[88], GetTriggerUnit().getPos())
+        createItem(items[53], GetTriggerUnit().getPos())
+        createItem(items[53], GetTriggerUnit().getPos())
+        createItem(items[53], GetTriggerUnit().getPos())
+        createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos()) // dropTable here, not made yet
+
+        dreadlordTimer.start(30, null)
+        dreadlordTimerDialog.setTitle("Dreadlord respawn: ")
+        dreadlordTimerDialog.setTitleColor(255, 255, 0, 0)
+        dreadlordTimerDialog.display(true)
+        doAfter(30) ->
+            let u2 = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U00V', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
+            SetHeroLevelBJ(u2,80,false)
+            CreateTrigger()
+            ..registerUnitEvent(u2, EVENT_UNIT_DEATH)
+            ..addAction() ->
+                createItem('I0AZ', GetTriggerUnit().getPos())
+                createItem(items[89], GetTriggerUnit().getPos())
+                createItem(items[53], GetTriggerUnit().getPos())
+                createItem(items[53], GetTriggerUnit().getPos())
+                createItem(items[53], GetTriggerUnit().getPos())
+                createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+
+            dreadlordTimer.destr()
+            dreadlordTimerDialog.destr()
+
+
+
+function dragonSpawn(int num)
+    let dragon = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), DRAGON_TYPE[num], GetRectCenter(gg_rct_Region_Dragon), bj_UNIT_FACING)
+    dragonIndex = num
+    CreateTrigger()
+    ..registerUnitEvent(dragon, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        if (GetUnitTypeId(GetTriggerUnit())=='u005')
+            UnitDropItem(GetTriggerUnit(), items[5])
+            createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u006')
+            createItem(items[GetRandomInt(92,93)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u007')
+            createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,80)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,80)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u008')
+            createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u009')
+            createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u00R')
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u00S')
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(84,85)], GetTriggerUnit().getPos())
+        else if (GetUnitTypeId(GetTriggerUnit())=='u00T')
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+            createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
+
+        let dragonSpawnTimer = CreateTimer()
+        let dragonSpawnTimerDialog = CreateTimerDialog(dragonSpawnTimer)
+
+        if (dragonIndex < 8)
+            dragonSpawnTimer.start(30, null)
+            dragonSpawnTimerDialog.setTitle("Dragon "+I2S(dragonIndex+ 1 )+" respawn: ")
+            dragonSpawnTimerDialog.setTitleColor(255, 255, 0, 0)
+            dragonSpawnTimerDialog.display(true)
+
+        doAfter(30) ->
+            dragonSpawnTimerDialog.display(false)
+            dragonSpawnTimer.pause()
+            if (dragonIndex < 8)
+                dragonSpawn(dragonIndex + 1)

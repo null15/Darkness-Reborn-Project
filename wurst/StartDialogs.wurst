@@ -1,0 +1,88 @@
+package StartDialogs
+import mainCode
+import DialogBox
+import ClosureTimers
+
+init
+
+    doAfter(1) -> 
+        startDialog()
+
+function normalMode()
+    udg_A_Damage[90] = 1
+    printTimed("|c00FEBA0EDifficulty level: Normal", 10)
+    SetPlayerTechResearchedSwap('R008', 1, Player(PLAYER_NEUTRAL_AGGRESSIVE))
+
+    EnableTrigger(gg_trg_Victory_NORMAL)
+
+    for i = 0 to 11
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 500)
+        Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
+        Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
+
+function hardMode()
+    udg_A_Damage[90] = 5
+    printTimed("|c00FEBA0EDifficulty level: Hard", 10)
+    SetPlayerTechResearchedSwap('R000',1,Player(11))
+    SetPlayerTechResearchedSwap('R001',1,Player(11))
+    SetPlayerTechResearchedSwap('R000',1,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R001',1,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R004',1,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R005',1,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R006',1,Player(11))
+    SetPlayerTechResearchedSwap('R007',1,Player(11))
+    SetPlayerTechResearchedSwap('R009',1,Player(11))
+    SetPlayerTechResearchedSwap('R00A',1,Player(11))
+    SetPlayerTechResearchedSwap('R00B',1,Player(11))
+    SetPlayerTechResearchedSwap('R00C',1,Player(11))
+    SetPlayerTechResearchedSwap('R00D',1,Player(11))
+    SetPlayerTechResearchedSwap('R00E',1,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    
+    EnableTrigger(gg_trg_Victory_HARD)
+
+    for i = 0 to 11
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 1000)
+        Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
+        Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
+
+function hellMode()
+    udg_A_Damage[90] = 10
+    printTimed("|c00FEBA0EDifficulty level: Hell", 10)
+    SetPlayerTechResearchedSwap('R000',2,Player(11))
+    SetPlayerTechResearchedSwap('R001',2,Player(11))
+    SetPlayerTechResearchedSwap('R000',2,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R001',2,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R004',2,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R005',2,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+    SetPlayerTechResearchedSwap('R006',2,Player(11))
+    SetPlayerTechResearchedSwap('R007',2,Player(11))
+    SetPlayerTechResearchedSwap('R009',2,Player(11))
+    SetPlayerTechResearchedSwap('R00A',2,Player(11))
+    SetPlayerTechResearchedSwap('R00B',2,Player(11))
+    SetPlayerTechResearchedSwap('R00C',2,Player(11))
+    SetPlayerTechResearchedSwap('R00D',2,Player(11))
+    SetPlayerTechResearchedSwap('R008',1,Player(11))
+    SetPlayerTechResearchedSwap('R00E',2,Player(PLAYER_NEUTRAL_AGGRESSIVE))
+
+    EnableTrigger(gg_trg_Victory_HELL)
+
+    for i = 0 to 11
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 1500)
+        Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
+        Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
+
+function startDialog()
+
+    let dBox = new DialogBox("Choose difficulty level")
+
+    dBox.addButton("Normal") ->
+        normalMode()
+        destroy dBox
+    dBox.addButton("Hard") ->
+        hardMode()
+        destroy dBox
+    dBox.addButton("Hell") ->
+        hellMode()
+        destroy dBox
+
+    dBox.display(players[0], true)

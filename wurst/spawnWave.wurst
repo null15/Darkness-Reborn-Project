@@ -30,9 +30,6 @@ unit boss3
 trigger gg_trg_Move_Attack=null
 trigger gg_trg_Move_Attack2=null
 
-timer lastCreatedTimer=null
-timerdialog lastCreatedTimerDialog=null
-
 public location array udg_AAttackWave
 
 init

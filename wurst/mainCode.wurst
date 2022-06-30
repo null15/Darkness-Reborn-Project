@@ -1203,7 +1203,6 @@ trigger gg_trg_Roll_Item_BossForest=null
 trigger gg_trg_MoveFarm=null
 trigger gg_trg_Camera=null
 trigger gg_trg_Revive_HERO=null
-trigger gg_trg_Revive_CREEP=null
 trigger gg_trg_Item_Cleanup=null
 trigger gg_trg_Move_Attack=null
 trigger gg_trg_MoveHR=null
@@ -19259,93 +19258,6 @@ public function InitTrig_Camera ()
 	TriggerRegisterPlayerChatEvent(gg_trg_Camera,Player(8),"-v",true)
 	TriggerRegisterPlayerChatEvent(gg_trg_Camera,Player(9),"-v",true)
 	TriggerAddAction(gg_trg_Camera,function Trig_Camera_Actions)
-
-public function Trig_Revive_HERO_Conditions () returns boolean
-	if(not(IsUnitAlly(GetTriggerUnit(),Player(10))==true))
-		return false
-	
-	if(not(GetOwningPlayer(GetTriggerUnit())!=Player(10)))
-		return false
-	
-	if(not(IsUnitType(GetTriggerUnit(),UNIT_TYPE_HERO)==true))
-		return false
-	
-	if(not(IsUnitIllusionBJ(GetTriggerUnit())==false))
-		return false
-	
-	return true
-
-public function Trig_Revive_HERO_Actions ()
-	StartTimerBJ(udg_Timer_HS[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))],false,10.00)
-	CreateTimerDialogBJ(GetLastCreatedTimerBJ(),GetPlayerName(GetTriggerPlayer()))
-	udg_windown_TImer_HS[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]=GetLastCreatedTimerDialogBJ()
-	// doAfter(10) ->
-	DestroyTimerDialogBJ(udg_windown_TImer_HS[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))])
-	ReviveHeroLoc(GetTriggerUnit(),GetPlayerStartLocationLoc(Player(0)),true)
-
-public function InitTrig_Revive_HERO ()
-	gg_trg_Revive_HERO=CreateTrigger()
-	TriggerRegisterAnyUnitEventBJ(gg_trg_Revive_HERO,EVENT_PLAYER_UNIT_DEATH)
-	TriggerAddCondition(gg_trg_Revive_HERO,Condition(function Trig_Revive_HERO_Conditions))
-	TriggerAddAction(gg_trg_Revive_HERO,function Trig_Revive_HERO_Actions)
-
-public function Trig_Revive_CREEP_Conditions () returns boolean
-	if(not(GetOwningPlayer(GetTriggerUnit())==Player(PLAYER_NEUTRAL_AGGRESSIVE)))
-		return false
-	
-	if(not(IsUnitIllusionBJ(GetTriggerUnit())==false))
-		return false
-	
-	if(not(IsUnitType(GetTriggerUnit(),UNIT_TYPE_STRUCTURE)==false))
-		return false
-	
-	return true
-
-public function Trig_Revive_CREEP_Func001Func001C () returns boolean
-	if(not(GetUnitLevel(GetTriggerUnit())<=69))
-		return false
-	
-	if(not(GetUnitLevel(GetTriggerUnit())>24))
-		return false
-	
-	return true
-
-public function Trig_Revive_CREEP_Func001C () returns boolean
-	if(not(GetUnitLevel(GetTriggerUnit())<=24))
-		return false
-	
-	if(not(GetUnitLevel(GetTriggerUnit())>=2))
-		return false
-	
-	return true
-
-public function Trig_Revive_CREEP_Func002C () returns boolean
-	if(not(GetUnitLevel(GetTriggerUnit())==1))
-		return false
-	
-	return true
-
-public function Trig_Revive_CREEP_Actions ()
-	if(Trig_Revive_CREEP_Func001C())
-		// TriggerSleepAction(1)
-		doAfter(1) -> 
-			CreateNUnitsAtLoc(1,GetUnitTypeId(GetTriggerUnit()),GetOwningPlayer(GetTriggerUnit()),GetUnitLoc(GetTriggerUnit()),bj_UNIT_FACING)
-
-	if(Trig_Revive_CREEP_Func001Func001C())
-			// TriggerSleepAction(5)
-		doAfter(5) -> 
-			CreateNUnitsAtLoc(1,GetUnitTypeId(GetTriggerUnit()),GetOwningPlayer(GetTriggerUnit()),GetUnitLoc(GetTriggerUnit()),bj_UNIT_FACING)
-
-	if(Trig_Revive_CREEP_Func002C())
-		// TriggerSleepAction(10)
-		doAfter(10) -> 
-			CreateNUnitsAtLoc(1,GetUnitTypeId(GetTriggerUnit()),GetOwningPlayer(GetTriggerUnit()),GetUnitLoc(GetTriggerUnit()),bj_UNIT_FACING)
-
-public function InitTrig_Revive_CREEP ()
-	gg_trg_Revive_CREEP=CreateTrigger()
-	TriggerRegisterAnyUnitEventBJ(gg_trg_Revive_CREEP,EVENT_PLAYER_UNIT_DEATH)
-	TriggerAddCondition(gg_trg_Revive_CREEP,Condition(function Trig_Revive_CREEP_Conditions))
-	TriggerAddAction(gg_trg_Revive_CREEP,function Trig_Revive_CREEP_Actions)
 
 public function Trig_Item_Cleanup_Func001Func010Func001C () returns boolean
 	if(not(GetItemLifeBJ(GetEnumItem())==0.00))
@@ -43639,7 +43551,6 @@ public function InitCustomTriggers ()
 	InitTrig_MoveFarm()
 	InitTrig_Camera()
 	InitTrig_Revive_HERO()
-	InitTrig_Revive_CREEP()
 	InitTrig_Item_Cleanup()
 	InitTrig_Move_Attack()
 	InitTrig_MoveHR()

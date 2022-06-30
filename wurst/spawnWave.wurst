@@ -674,7 +674,7 @@ public function spawnWave()
         waveId = waveId + 1
         if (waveId <= 20)
 
-            DisplayTimedTextToForce(GetPlayersAll(),30,"Wave "+I2S(waveId)+" is spawning")
+            DisplayTimedTextToForce(GetPlayersAll(),10,"Wave "+I2S(waveId)+" is spawning")
             CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
             GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
             CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)

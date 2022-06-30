@@ -1,0 +1,55 @@
+package heroRespawn
+import ClosureTimers
+
+rect respawnHeroRect = Rect(- 96.0, - 5952.0, 96.0, - 5760.0)
+timer array heroRespawnTimer
+timerdialog array heroRespawnDialog
+
+init
+
+    respawnHeroInit()
+
+function respawnHeroAct()
+    for i = 0 to 9
+        if GetOwningPlayer(GetTriggerUnit()) == Player(i)
+            let hero = GetTriggerUnit()
+
+            heroRespawnTimer[i] = CreateTimer()
+            heroRespawnDialog[i] = CreateTimerDialog(heroRespawnTimer[i])
+
+            heroRespawnTimer[i].start(10, null)
+            heroRespawnDialog[i].setTitle(GetPlayerName(Player(i))+"'s Hero respawn: ")
+
+            if i == 0
+                heroRespawnDialog[i].setTitleColor(255, 0, 0, 0)
+            else if i == 1
+                heroRespawnDialog[i].setTitleColor(0, 0, 255, 0)
+            else if i == 2
+                heroRespawnDialog[i].setTitleColor(0, 255, 255, 0)
+            else if i == 3
+                heroRespawnDialog[i].setTitleColor(153, 0, 153, 0)
+            else if i == 4
+                heroRespawnDialog[i].setTitleColor(255, 255, 102, 0)
+            else if i == 5
+                heroRespawnDialog[i].setTitleColor(255, 153, 0, 0)
+            else if i == 6
+                heroRespawnDialog[i].setTitleColor(0, 204, 0, 0)
+            else if i == 7
+                heroRespawnDialog[i].setTitleColor(255, 0, 255, 0)
+            else if i == 8
+                heroRespawnDialog[i].setTitleColor(102, 102, 102, 0)
+            else if i == 9
+                heroRespawnDialog[i].setTitleColor(153, 204, 255, 0)
+
+            heroRespawnDialog[i].display(true)
+
+            doAfter(10) ->
+                ReviveHeroLoc(hero, GetRectCenter(respawnHeroRect), true)   
+                heroRespawnDialog[i].display(false)
+                heroRespawnTimer[i].destr()
+                heroRespawnDialog[i].destr()
+
+function respawnHeroInit()
+    CreateTrigger()
+    ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
+    ..addAction(function respawnHeroAct)

@@ -1,0 +1,31 @@
+package CreepRespawn
+
+import ClosureTimers
+
+rect rightCreepsRect = Rect(2528.0, - 7104.0, 11296.0, - 3200.0)
+rect leftCreeps = Rect(- 11456.0, - 7232.0, - 2528.0, - 1472.0)
+
+region rightCreepsRegion = CreateRegion()
+region leftCreepsRegion = CreateRegion()
+
+init
+
+    RegionAddRect(rightCreepsRegion, rightCreepsRect)
+    RegionAddRect(leftCreepsRegion, leftCreeps)
+    reviveCreepsInit()
+
+function reviveCreepsAct()
+
+    if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit())
+        let u1 = GetTriggerUnit()
+        doAfter(15) ->  
+            CreateUnit(GetOwningPlayer(u1), GetUnitTypeId(u1), u1.getX(), u1.getY(), bj_UNIT_FACING)
+    else if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(leftCreepsRegion, GetTriggerUnit())
+        let u2 = GetTriggerUnit()
+        doAfter(1) -> 
+            CreateUnit(GetOwningPlayer(u2), GetUnitTypeId(u2), u2.getX(), u2.getY(), bj_UNIT_FACING)
+
+function reviveCreepsInit()
+    CreateTrigger()
+    ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
+    ..addAction(function reviveCreepsAct)

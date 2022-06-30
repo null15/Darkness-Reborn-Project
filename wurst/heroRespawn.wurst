@@ -1,10 +1,12 @@
 package heroRespawn
 import ClosureTimers
+import pickhero
 
 rect respawnHeroRect = Rect(- 96.0, - 5952.0, 96.0, - 5760.0)
 timer array heroRespawnTimer
 timerdialog array heroRespawnDialog
-
+int heroIndex = 0
+boolexpr yes
 init
 
     respawnHeroInit()
@@ -12,7 +14,6 @@ init
 function respawnHeroAct()
     for i = 0 to 9
         if GetOwningPlayer(GetTriggerUnit()) == Player(i)
-            let hero = GetTriggerUnit()
 
             heroRespawnTimer[i] = CreateTimer()
             heroRespawnDialog[i] = CreateTimerDialog(heroRespawnTimer[i])
@@ -44,12 +45,19 @@ function respawnHeroAct()
             heroRespawnDialog[i].display(true)
 
             doAfter(10) ->
-                ReviveHeroLoc(hero, GetRectCenter(respawnHeroRect), true)   
+                ReviveHeroLoc(playerHero[i], GetRectCenter(respawnHeroRect), true)   
                 heroRespawnDialog[i].display(false)
                 heroRespawnTimer[i].destr()
                 heroRespawnDialog[i].destr()
 
+function isaHero() returns boolean
+    for i = 0 to 9
+        if GetTriggerUnit() == playerHero[i]
+            return true
+    return false
+
 function respawnHeroInit()
-    CreateTrigger()
-    ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
-    ..addAction(function respawnHeroAct)
+    for i = 0 to 9
+        CreateTrigger()
+        ..registerPlayerUnitEvent(Player(i), EVENT_PLAYER_UNIT_DEATH, Condition(function isaHero))
+        ..addAction(function respawnHeroAct)

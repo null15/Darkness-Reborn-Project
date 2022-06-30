@@ -1,0 +1,20 @@
+package pickhero
+
+public unit array playerHero
+
+init
+
+    pickHeroInit()
+
+function pickHeroAct()
+    if GetUnitTypeId(GetSellingUnit())=='n00A' or GetUnitTypeId(GetSellingUnit())=='n00B' or GetUnitTypeId(GetSellingUnit())=='n00C'
+        for i = 0 to 9
+            if GetOwningPlayer(GetSoldUnit()) == Player(i)
+                playerHero[i] = GetSoldUnit()
+                print("unit name: "+GetUnitName(playerHero[i])+" saved to playerHero["+I2S(i)+"] for player: "+GetPlayerName(Player(i)))
+
+function pickHeroInit()
+
+    CreateTrigger()
+    ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_SELL)
+    ..addAction(function pickHeroAct)

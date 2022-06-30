@@ -1,4 +1,4 @@
-# Darkness-Reborn-Project
+# Darkness Reborn
 
 Custom map for the Warcraft III game
 

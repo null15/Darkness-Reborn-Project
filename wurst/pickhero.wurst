@@ -11,7 +11,6 @@ function pickHeroAct()
         for i = 0 to 9
             if GetOwningPlayer(GetSoldUnit()) == Player(i)
                 playerHero[i] = GetSoldUnit()
-                print("unit name: "+GetUnitName(playerHero[i])+" saved to playerHero["+I2S(i)+"] for player: "+GetPlayerName(Player(i)))
 
 function pickHeroInit()
 

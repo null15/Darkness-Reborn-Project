@@ -8,7 +8,7 @@ init
 
 @compiletime function gen()
     new UnitDefinition('o100', UnitIds.snapdragon)
-        ..setName("Snappy Snapragon II")
+        ..setName("Snappy Snapdragon II")
         ..setHitPointsMaximumBase(1000000)
         ..setNormalAbilities(commaList("Amim", "A0NP", "A0MO", "A0C4", "Aasl"))
         ..setIconGameInterface("ReplaceableTextures/CommandButtons/BTNSnowman.blp")
@@ -44,7 +44,7 @@ init
         ..setUpgradesUsed(commaList("R005","R004"))
 
     new UnitDefinition('o101', UnitIds.snapdragon)
-        ..setName("Snappy Snapragon III")
+        ..setName("Snappy Snapdragon III")
         ..setHitPointsMaximumBase(1000000)
         ..setNormalAbilities(commaList("Amim", "A0NP", "A0MO", "A0C4", "Aasl"))
         ..setIconGameInterface("ReplaceableTextures/CommandButtons/BTNSnowman.blp")

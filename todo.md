@@ -4,6 +4,8 @@
 [4]: -Code broken, replace the system with hard-coded names and trigger dialog on command if name match.  
 [5:] Fix minibosses on certain waves, spawns bosses instead[^5]  
 [6:] Upgrade snapragon on death[^6]  
+[7:] Item drops might be wrong?  
+[8:]: Ice Revenant not respawning  
 
 [^1]: Revenant dont respawn   
 [^2]: Potential fix, need test    

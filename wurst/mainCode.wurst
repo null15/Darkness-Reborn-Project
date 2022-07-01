@@ -18696,7 +18696,7 @@ public function Trig_Roll_Item_BossForest_Func006C () returns boolean
 		return false
 
 public function Trig_Roll_Item_BossForest_Func007C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='o005')
+	if(GetUnitTypeId(GetTriggerUnit())=='o005' or GetUnitTypeId(GetTriggerUnit())=='o100' or GetUnitTypeId(GetTriggerUnit())=='o101')
 		return true
 	else
 		return false
@@ -34854,7 +34854,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func013Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func013C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='o005'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='o005' or GetUnitTypeId(udg_A_Unit_Cast[18])=='o100' or GetUnitTypeId(udg_A_Unit_Cast[18])=='o101'))
 		return false
 	
 	return true

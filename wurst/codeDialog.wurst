@@ -1,0 +1,106 @@
+package codeDialog
+
+import HashSet
+import DialogBox
+import pickhero
+import mainCode
+
+constant PLAYER_NAME_1 = "null#12140"
+constant PLAYER_NAME_2 = "Yurieeh#2235"
+constant PLAYER_NAME_3 = "Magepowers#1896"
+constant PLAYER_NAME_4 = "JoJo#16186"
+constant PLAYER_NAME_5 = "Prime#2336"
+constant PLAYER_NAME_6 = "Illidan557#1331"
+constant PLAYER_NAME_7 = "BlazingDawn#11220"
+constant PLAYER_NAME_8 = "oennerth#2997"
+constant PLAYER_NAME_9 = "Palagrim#2871"
+constant PLAYER_NAME_10 = "Vivent#2756"
+constant PLAYER_NAME_11 = "Nhv#11269"
+constant PLAYER_NAME_12 = "Cooltiger#1502"
+
+constant PLAYER_SET = new HashSet<string>
+
+rect region006 = Rect(-192.0,-5696.0,256.0,-5248.0)
+
+init
+    
+    addPlayers()
+    codeDialogInit()
+        
+function addPlayers()
+    PLAYER_SET.add(
+        PLAYER_NAME_1,
+        PLAYER_NAME_2,
+        PLAYER_NAME_3,
+        PLAYER_NAME_4,
+        PLAYER_NAME_5,
+        PLAYER_NAME_6,
+        PLAYER_NAME_7,
+        PLAYER_NAME_8,
+        PLAYER_NAME_9,
+        PLAYER_NAME_10,
+        PLAYER_NAME_11,
+        PLAYER_NAME_12)
+
+function codeDialogAct()
+    let buffBox = new DialogBox("Choose your benefit")
+
+    PLAYER_SET.remove(GetPlayerName(GetTriggerPlayer()))
+
+    buffBox.addButton("Set Level to: 10") ->
+        SetHeroLevel(playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], 11, true)
+        destroy buffBox
+
+    buffBox.addButton("Set Gold to: 3*StartingValue") ->
+        if udg_A_Damage[90] == 1
+            AdjustPlayerStateBJ(1800, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
+        else if udg_A_Damage[90] == 5
+            AdjustPlayerStateBJ(3200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
+        else if udg_A_Damage[90] == 10
+            AdjustPlayerStateBJ(4200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
+        else
+            printTimedToPlayer("A mode has not yet been chosen, please wait", 5, GetTriggerPlayer())
+            PLAYER_SET.add(GetPlayerName(GetTriggerPlayer()))
+        destroy buffBox
+
+    buffBox.addButton("Modify Stats: +30 All") ->
+        ModifyHeroStat(bj_HEROSTAT_STR, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
+        ModifyHeroStat(bj_HEROSTAT_AGI, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
+        ModifyHeroStat(bj_HEROSTAT_INT, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
+        destroy buffBox
+
+    buffBox.addButton("Hero: Tracker") ->
+        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
+            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H047', GetRectCenter(region006), bj_UNIT_FACING)
+            SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
+        else
+            printTimed("You already have a hero.", 10)
+        destroy buffBox
+
+    buffBox.addButton("Hero: Thief") ->
+        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
+            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00V', GetRectCenter(region006), bj_UNIT_FACING)
+            SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
+        else
+            printTimed("You already have a hero.", 10)
+        destroy buffBox
+
+    buffBox.addButton("Hero: Pandaren") ->
+        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
+            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00Z', GetRectCenter(region006), bj_UNIT_FACING)
+            SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
+        else
+            printTimed("You already have a hero.", 10)
+        destroy buffBox
+
+    buffBox.display(GetTriggerPlayer(), true)
+
+function codeDialogCond() returns boolean
+    return PLAYER_SET.has(GetPlayerName(GetTriggerPlayer()))
+
+function codeDialogInit()
+    for i = 0 to 9
+        CreateTrigger()
+        ..registerPlayerChatEvent(Player(i), "-buff", true)
+        ..addCondition(Condition(function codeDialogCond))
+        ..addAction(function codeDialogAct)

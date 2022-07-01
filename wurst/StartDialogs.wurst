@@ -4,8 +4,9 @@ import DialogBox
 import ClosureTimers
 
 init
-
-    doAfter(1) -> 
+    
+    printTimed("Initializing variables...", 3)
+    doAfter(3) -> 
         startDialog()
 
 function normalMode()
@@ -16,7 +17,7 @@ function normalMode()
     EnableTrigger(gg_trg_Victory_NORMAL)
 
     for i = 0 to 11
-        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 500)
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 900)
         Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
         Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
 
@@ -41,7 +42,7 @@ function hardMode()
     EnableTrigger(gg_trg_Victory_HARD)
 
     for i = 0 to 11
-        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 1000)
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 1600)
         Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
         Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
 
@@ -67,7 +68,7 @@ function hellMode()
     EnableTrigger(gg_trg_Victory_HELL)
 
     for i = 0 to 11
-        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 1500)
+        Player(i).addState(PLAYER_STATE_RESOURCE_GOLD, 2100)
         Player(i).addState(PLAYER_STATE_RESOURCE_LUMBER, 5)
         Player(i).addState(PLAYER_STATE_RESOURCE_FOOD_CAP, 5)
 

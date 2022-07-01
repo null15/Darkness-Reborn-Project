@@ -3,6 +3,6 @@ projectName: Darkness Reborn Project
 dependencies:
 - https://github.com/wurstscript/wurstStdlib2
 buildMapData:
-  name: placeholder test 2
-  fileName: placeholder test 2
+  name: Darkness Reborn v3.0n
+  fileName: Darkness Reborn v3.0n
   author: '|cFFff2020DR Community|r'

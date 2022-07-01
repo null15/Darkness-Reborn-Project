@@ -1,0 +1,124 @@
+package RightSideCreeps
+
+import ClosureTimers
+
+unit betrayFootman
+unit captain
+unit nerubianQueen
+unit hydralisk
+unit furbolgUrsaWarrior
+unit fleshGolem
+unit doomGuard
+unit scaryScream
+unit iceRev
+unit snappySnapdragonI
+unit snappySnapdragonII
+unit snappySnapdragonIII
+
+init
+
+    betrayFootman()
+    captain()
+    nerubianQueen()
+    hydralisk()
+    furbolgUrsaWarrior()
+    fleshGolem()
+    doomGuard()
+    scaryScream()
+    iceRevenantRespawn()
+    snappySnapdragonI()
+
+function betrayFootman()
+    betrayFootman = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'h00C',3171.0,-3410.3,312.285)
+    CreateTrigger()
+    ..registerUnitEvent(betrayFootman, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(1) ->
+            betrayFootman()
+
+function captain()
+    captain = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'h00D',5018.1,-3412.7,192.333)
+    CreateTrigger()
+    ..registerUnitEvent(captain, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(1) ->
+            captain()
+
+function nerubianQueen()
+    nerubianQueen = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'n012',3207.3,-6654.7,83.334)
+    CreateTrigger()
+    ..registerUnitEvent(nerubianQueen, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            nerubianQueen()
+
+function hydralisk()
+    hydralisk = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'z000',4992.6,-6626.5,34.366)
+    CreateTrigger()
+    ..registerUnitEvent(hydralisk, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            hydralisk()
+
+function furbolgUrsaWarrior()
+    furbolgUrsaWarrior = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'n014',6854.7,-6696.6,220.579)
+    CreateTrigger()
+    ..registerUnitEvent(furbolgUrsaWarrior, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            furbolgUrsaWarrior()
+
+function fleshGolem()
+    fleshGolem = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'n013',8565.8,-6675.9,187.257)
+    CreateTrigger()
+    ..registerUnitEvent(fleshGolem, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            fleshGolem()
+
+function doomGuard()
+    doomGuard = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'n015',10504.7,-6665.4,35.004)
+    CreateTrigger()
+    ..registerUnitEvent(doomGuard, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            doomGuard()
+
+function scaryScream()
+    scaryScream = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'u004',6764.5,-3471.8,278.607)
+    CreateTrigger()
+    ..registerUnitEvent(scaryScream, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            scaryScream()
+
+function iceRevenantRespawn()
+    iceRev = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'n016',10657.4,-3533.2,350.277)
+    SetUnitState(iceRev,UNIT_STATE_MANA,0)
+    CreateTrigger()
+    ..registerUnitEvent(iceRev, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(5) ->
+            iceRevenantRespawn()
+
+function snappySnapdragonIII()
+    snappySnapdragonIII = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'o101',8599.3,-3502.0,27.522)
+    SetUnitState(snappySnapdragonIII,UNIT_STATE_MANA,0)
+
+function snappySnapdragonII()
+    snappySnapdragonII = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'o100',8599.3,-3502.0,27.522)
+    SetUnitState(snappySnapdragonII,UNIT_STATE_MANA,0)
+    CreateTrigger()
+    ..registerUnitEvent(snappySnapdragonII, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(15) ->
+            snappySnapdragonIII()    
+
+function snappySnapdragonI()
+    snappySnapdragonI = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'o005',8599.3,-3502.0,27.522)
+    SetUnitState(snappySnapdragonI,UNIT_STATE_MANA,0)
+    CreateTrigger()
+    ..registerUnitEvent(snappySnapdragonI, EVENT_UNIT_DEATH)
+    ..addAction() ->
+        doAfter(15) ->
+            snappySnapdragonII()           

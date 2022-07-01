@@ -16,23 +16,11 @@ init
 
 function reviveCreepsAct()
 
-    if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit()) and GetUnitTypeId(GetTriggerUnit()) != 'o005' and GetUnitTypeId(GetTriggerUnit()) != 'o100' and GetUnitTypeId(GetTriggerUnit()) != 'o101'
-        let u1 = GetTriggerUnit()
-        doAfter(15) ->  
-            CreateUnit(GetOwningPlayer(u1), GetUnitTypeId(u1), u1.getX(), u1.getY(), bj_UNIT_FACING)
-    else if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(leftCreepsRegion, GetTriggerUnit())
+    if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(leftCreepsRegion, GetTriggerUnit())
         let u2 = GetTriggerUnit()
         doAfter(1) -> 
             CreateUnit(GetOwningPlayer(u2), GetUnitTypeId(u2), u2.getX(), u2.getY(), bj_UNIT_FACING)
-    else if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit()) and GetUnitTypeId(GetTriggerUnit()) == 'o005'
-        let u3 = GetTriggerUnit()
-        doAfter(15) ->  
-            CreateUnit(GetOwningPlayer(u3), 'o100' , u3.getX(), u3.getY(), bj_UNIT_FACING)
-    else if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit()) and GetUnitTypeId(GetTriggerUnit()) == 'o100'
-        let u4 = GetTriggerUnit()
-        doAfter(15) ->  
-            CreateUnit(GetOwningPlayer(u4), 'o101' , u4.getX(), u4.getY(), bj_UNIT_FACING)
-            
+      
 function reviveCreepsInit()
     CreateTrigger()
     ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)

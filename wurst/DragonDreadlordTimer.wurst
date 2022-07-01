@@ -122,6 +122,10 @@ function dragonSpawn(int num)
         let dragonSpawnTimer = CreateTimer()
         let dragonSpawnTimerDialog = CreateTimerDialog(dragonSpawnTimer)
 
+        if (dragonIndex == 8)
+            dragonSpawnTimer.destr()
+            dragonSpawnTimerDialog.destr()
+
         if (dragonIndex < 8)
             dragonSpawnTimer.start(30, null)
             dragonSpawnTimerDialog.setTitle("Dragon "+I2S(dragonIndex+ 1 )+" respawn: ")

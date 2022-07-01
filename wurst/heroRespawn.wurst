@@ -12,6 +12,7 @@ init
     respawnHeroInit()
 
 function respawnHeroAct()
+
     let i = GetOwningPlayer(GetTriggerUnit()).getId()
     
     if GetOwningPlayer(GetTriggerUnit()) == Player(i)
@@ -34,9 +35,9 @@ function respawnHeroAct()
 function isaHero() returns boolean
     return GetTriggerUnit() == playerHero[GetOwningPlayer(GetTriggerUnit()).getId()]
 
-
 function respawnHeroInit()
     for i = 0 to 9
         CreateTrigger()
-        ..registerPlayerUnitEvent(Player(i), EVENT_PLAYER_UNIT_DEATH, Condition(function isaHero))
+        ..registerPlayerUnitEvent(Player(i), EVENT_PLAYER_UNIT_DEATH, null)
+        ..addCondition(Condition(function isaHero))
         ..addAction(function respawnHeroAct)

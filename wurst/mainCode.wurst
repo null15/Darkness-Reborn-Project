@@ -4,6 +4,7 @@ import ClosureTimers
 import Timer
 import spawnWave
 import ItemDrops
+import RightSideCreeps
 
 hashtable nzHash = InitHashtable( )
 
@@ -8431,24 +8432,24 @@ public function SetSoundVolumeAs3D (sound s,real x,real y,real max_vol,real max_
 public function MinSleep () returns real
 	return(-1.00)
 
-public function Sleep (real seconds )
+public function Sleep (real seconds ) returns real
 	real timRem=0.
 	real sleep=0.
 	real timRemMain=0.
 	integer n=0
 	boolean timFinish=FALSE
 	if(seconds<=0. and seconds!=(-1.00))
-		return
+		return 0
 	
 	if(seconds<=bj_WAIT_FOR_COND_MIN_INTERVAL)
-		doAfter(-1) ->
-			return 0
+		TriggerSleepAction(-1)
+		return 0
 	
 	timRemMain=TimerGetRemaining(NativeDDUniversalPack___sleepTimer)-seconds
 	timRem=seconds
 	if(timRemMain<0.)
-		doAfter(seconds) ->
-			return 0
+		TriggerSleepAction(seconds)
+		return 0
 	
 	if(seconds-.5>0.)
 		sleep=seconds-.5
@@ -8456,10 +8457,10 @@ public function Sleep (real seconds )
 			if(timRem<=.5)
 				break
 
-			doAfter(sleep) ->
-				timRem=TimerGetRemaining(NativeDDUniversalPack___sleepTimer)-timRemMain
-				if(timRem>.5)
-					sleep=timRem-.5
+			TriggerSleepAction(sleep)
+			timRem=TimerGetRemaining(NativeDDUniversalPack___sleepTimer)-timRemMain
+			if(timRem>.5)
+				sleep=timRem-.5
 			
 		
 	else
@@ -8474,10 +8475,12 @@ public function Sleep (real seconds )
 		timFinish=((timRem<=0.026)and(n<=0))or(timRem<=sleep)
 		if(timFinish)
 			break
-		doAfter(-1) ->
-			n=n-1
-			timRem=TimerGetRemaining(NativeDDUniversalPack___sleepTimer)-timRemMain
-	
+		
+		TriggerSleepAction(-1)
+		n=n-1
+		timRem=TimerGetRemaining(NativeDDUniversalPack___sleepTimer)-timRemMain
+
+	return 0
 
 public function SleepDebug (integer miliseconds )
 	Sleep(miliseconds/ 1000.)
@@ -12509,8 +12512,6 @@ public function InstinctFlash__PushData (integer s ) returns integer
 public function InstinctFlash__AfterTimeAction ()
 	timer t=GetExpiredTimer()
 	integer s=(LoadInteger(DDTable,GetHandleId((t)),0))
-	print("InstinctFlash__AfterTimeAction 1")
-	// print(GetUnitName(s__InstinctFlash__islash_u[s]))
 	ShowUnit(s__InstinctFlash__islash_u[s],true)
 	E_FadeUnit(s__InstinctFlash__islash_u[s],InstinctFlash__CASTER_EANIM_DURATION,70.,0.)
 	PauseUnit(s__InstinctFlash__islash_u[s],false) // was true
@@ -12521,7 +12522,6 @@ public function InstinctFlash__AfterTimeAction ()
 	SetSoundVolumeAs3D(bj_lastPlayedSound,GetUnitX(s__InstinctFlash__islash_u[s])+s__InstinctFlash__islash_dist[s]*0.5*Cos(s__InstinctFlash__islash_rad[s]),GetUnitY(s__InstinctFlash__islash_u[s])+s__InstinctFlash__islash_dist[s]*0.5*Sin(s__InstinctFlash__islash_rad[s]),InstinctFlash__SOUND_ECHO_VOL,3500.)
 	StartSound(bj_lastPlayedSound)
 	KillSoundWhenDone(bj_lastPlayedSound)
-	print("InstinctFlash__AfterTimeAction 2")
 
 public function InstinctFlash__FadeIllusions (hashtable table,real trans )
 	unit u=LoadUnitHandle(table,0,0)
@@ -12542,7 +12542,6 @@ public function InstinctFlash__CreateIllusion (real x,real y,real rad,real s_tra
 	FadeObject(ht,s_trans,e_trans,InstinctFlash__ILLUSION_DURATION,(4))
 	SetUnitTimeScale(bj_lastCreatedUnit,InstinctFlash__ILLUSION_MOTION*0.01)
 	SetUnitAnimationByIndex(bj_lastCreatedUnit,InstinctFlash__ILLUSION_ANIMATION)
-	print("InstinctFlash__CreateIllusion 1")
 	ht=null
 	return(bj_lastCreatedUnit)
 
@@ -12556,8 +12555,6 @@ public function InstinctFlash__LoadIllusions (real x,real y,real rad )
 	integer tp=s__dd_parab_create(InstinctFlash__ILLUSION_WIDTH,InstinctFlash__ILLUSION_HEIGHT)
 	integer p=s__dd_parab_new()
 	unit array u
-	print("w: "+R2S(w))
-	print("h: "+R2S(h))
 	while true
 		i=i+1
 		if(i>=3)
@@ -12566,8 +12563,6 @@ public function InstinctFlash__LoadIllusions (real x,real y,real rad )
 		h=300-s__dd_parab_GetHeight(tp,w)
 		w=w-550*0.5
 		d=SquareRoot(w*w+h*h)
-		print("w1: "+R2S(w))
-		print("h1: "+R2S(h))
 		r=Atan(w/ h)
 		u[0]=InstinctFlash__CreateIllusion(x+d*Cos(0+rad),y+d*Sin(0+rad),rad,10.,40.)
 		u[1]=InstinctFlash__CreateIllusion(x+d*Cos(0+rad),y+d*Sin(0+rad),rad,10.,40.)
@@ -12579,7 +12574,6 @@ public function InstinctFlash__LoadIllusions (real x,real y,real rad )
 	InstinctFlash__CreateIllusion(x,y,rad,10.,40.)
 	s__dd_parab_delete(tp)
 	s__dd_parab_delete(p)
-	print("InstinctFlash__LoadIllusions")
 	u[0]=null
 	u[1]=null
 
@@ -12596,7 +12590,6 @@ public function InstinctFlash__Actions ()
 	real y2=GetLocationY(l)
 	real rad=Atan2(y2-y1,x2-x1)
 	integer is=Null
-	print("InstinctFlash__Actions 1")
 	SetUnitFacing(u,rad*RADTODEG)
 	ShowUnit(u,false)
 	InstinctFlash__LoadIllusions(x1,y1,rad)
@@ -12604,9 +12597,7 @@ public function InstinctFlash__Actions ()
 	SetSoundVolumeAs3D(bj_lastPlayedSound,x1,y1,InstinctFlash__SOUND_DRAW_VOL,3500.)
 	StartSound(bj_lastPlayedSound)
 	KillSoundWhenDone(bj_lastPlayedSound)
-	print("InstinctFlash__Actions 2")
 	is=s__InstinctFlash__islash_create(u,x2,y2,rad,GetUnitAbilityLevel(u,InstinctFlash__INSTINCT_FLASH),InstinctFlash__ConvRect(x1,y1,x2,y2,rad))
-	print("InstinctFlash__Actions 3")
 	SaveInteger(DDTable,GetHandleId((t)),0,((is)))
 	TimerStart(t,InstinctFlash__ILLUSION_DURATION,false,function InstinctFlash__AfterTimeAction)
 	RemoveRect(InstinctFlash__TempRect)
@@ -15746,42 +15737,45 @@ public function CreateNeutralHostile ()
 	u=CreateUnit(p,'n00Y',-6170.3,-1711.0,264.201)
 	u=CreateUnit(p,'n00G',-6206.7,-6308.4,268.097)
 	u=CreateUnit(p,'n054',-299.4,-11006.3,85.758)
-	u=CreateUnit(p,'n012',3207.3,-6654.7,83.334)
-	u=CreateUnit(p,'n014',6854.7,-6696.6,220.579)
-	u=CreateUnit(p,'n015',10504.7,-6665.4,35.004)
-	u=CreateUnit(p,'n013',8565.8,-6675.9,187.257)
-	u=CreateUnit(p,'z000',4992.6,-6626.5,34.366)
-	u=CreateUnit(p,'o005',8599.3,-3502.0,27.522)
-	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n016',10657.4,-3533.2,350.277)
-	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'h00C',3171.0,-3410.3,312.285)
-	u=CreateUnit(p,'h00D',5018.1,-3412.7,192.333)
-	u=CreateUnit(p,'u004',6764.5,-3471.8,278.607)
-	u=CreateUnit(p,'e006',-7832.5,-750.9,47.555)
-	u=CreateUnit(p,'e006',-6298.5,-764.2,127.169)
-	u=CreateUnit(p,'e006',-6294.3,695.0,222.003)
-	u=CreateUnit(p,'e006',-7822.2,780.4,318.056)
-	u=CreateUnit(p,'e006',-7789.1,-53.5,358.679)
-	u=CreateUnit(p,'e006',-6286.9,-89.2,165.753)
-	u=CreateUnit(p,'n011',-11029.3,769.6,293.421)
-	u=CreateUnit(p,'n011',-9193.1,705.2,53.241)
-	u=CreateUnit(p,'n011',-10999.5,-733.2,99.616)
-	u=CreateUnit(p,'n011',-9182.1,-802.5,145.771)
-	u=CreateUnit(p,'n011',-11090.3,-16.2,336.478)
-	u=CreateUnit(p,'n011',-9196.8,-38.9,124.732)
-	u=CreateUnit(p,'n011',-10064.9,777.2,209.538)
-	u=CreateUnit(p,'n011',-10086.6,-794.5,94.947)
-	u=CreateUnit(p,'e006',-7031.2,-768.5,91.851)
-	u=CreateUnit(p,'e006',-7006.7,758.1,275.264)
-	u=CreateUnit(p,'e006',-6633.5,367.1,203.337)
-	u=CreateUnit(p,'e006',-7414.1,351.4,317.575)
-	u=CreateUnit(p,'e006',-7381.4,-392.5,64.190)
-	u=CreateUnit(p,'e006',-6684.1,-407.8,135.025)
-	u=CreateUnit(p,'n011',-10592.7,-365.9,99.616)
-	u=CreateUnit(p,'n011',-10584.6,310.5,99.616)
-	u=CreateUnit(p,'n011',-9608.1,365.4,99.616)
-	u=CreateUnit(p,'n011',-9667.9,-370.4,99.616)
+	// u=CreateUnit(p,'n012',3207.3,-6654.7,83.334)
+	// u=CreateUnit(p,'n014',6854.7,-6696.6,220.579)
+	// u=CreateUnit(p,'n015',10504.7,-6665.4,35.004)
+	// u=CreateUnit(p,'n013',8565.8,-6675.9,187.257)
+	// u=CreateUnit(p,'z000',4992.6,-6626.5,34.366)
+	// u=CreateUnit(p,'o005',8599.3,-3502.0,27.522)
+	// SetUnitState(u,UNIT_STATE_MANA,0)
+	// u=CreateUnit(p,'n016',10657.4,-3533.2,350.277)
+	// SetUnitState(u,UNIT_STATE_MANA,0)
+	// u=CreateUnit(p,'h00C',3171.0,-3410.3,312.285)
+	// u=CreateUnit(p,'h00D',5018.1,-3412.7,192.333)
+	// u=CreateUnit(p,'u004',6764.5,-3471.8,278.607)
+
+	// u=CreateUnit(p,'e006',-7832.5,-750.9,47.555)
+	// u=CreateUnit(p,'e006',-6298.5,-764.2,127.169)
+	// u=CreateUnit(p,'e006',-6294.3,695.0,222.003)
+	// u=CreateUnit(p,'e006',-7822.2,780.4,318.056)
+	// u=CreateUnit(p,'e006',-7789.1,-53.5,358.679)
+	// u=CreateUnit(p,'e006',-6286.9,-89.2,165.753)
+	// u=CreateUnit(p,'e006',-7031.2,-768.5,91.851)
+	// u=CreateUnit(p,'e006',-7006.7,758.1,275.264)
+	// u=CreateUnit(p,'e006',-6633.5,367.1,203.337)
+	// u=CreateUnit(p,'e006',-7414.1,351.4,317.575)
+	// u=CreateUnit(p,'e006',-7381.4,-392.5,64.190)
+	// u=CreateUnit(p,'e006',-6684.1,-407.8,135.025)
+
+	// u=CreateUnit(p,'n011',-11029.3,769.6,293.421)
+	// u=CreateUnit(p,'n011',-9193.1,705.2,53.241)
+	// u=CreateUnit(p,'n011',-10999.5,-733.2,99.616)
+	// u=CreateUnit(p,'n011',-9182.1,-802.5,145.771)
+	// u=CreateUnit(p,'n011',-11090.3,-16.2,336.478)
+	// u=CreateUnit(p,'n011',-9196.8,-38.9,124.732)
+	// u=CreateUnit(p,'n011',-10064.9,777.2,209.538)
+	// u=CreateUnit(p,'n011',-10086.6,-794.5,94.947)
+	// u=CreateUnit(p,'n011',-10592.7,-365.9,99.616)
+	// u=CreateUnit(p,'n011',-10584.6,310.5,99.616)
+	// u=CreateUnit(p,'n011',-9608.1,365.4,99.616)
+	// u=CreateUnit(p,'n011',-9667.9,-370.4,99.616)
+
 	u=CreateUnit(p,'n054',32.5,-11014.0,91.618)
 	u=CreateUnit(p,'n054',397.8,-10988.3,90.279)
 	u=CreateUnit(p,'n054',-166.5,-10846.4,85.479)
@@ -17623,6 +17617,8 @@ public function Trig_Roll_Item_Boss_Func005C () returns boolean
 		return false
 	
 	return true
+
+// the wave 5, 6 bug
 
 public function Trig_Roll_Item_Boss_Func006Func010001 () returns boolean
 	return(GetUnitTypeId(GetTriggerUnit())==udg_BossWave[26])

@@ -3,7 +3,7 @@
 [3]: Bladeknight (red samuro) needs to be disabled, not sure how to fix. :-1:  
 [4]: -Code broken, replace the system with hard-coded names and trigger dialog on command if name match.  
 [5:] Fix minibosses on certain waves, spawns bosses instead.[^5]  
-[6:] Upgrade snapragon on death.[^6]  
+[6:] Upgrade Snappy Snapdragon on death.[^6]  
 [7:] Item drops might be wrong?  
 [8:]: Ice Revenant not respawning.  
 

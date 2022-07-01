@@ -5,7 +5,7 @@
 [5:] Fix minibosses on certain waves, spawns bosses instead[^5]  
 [6:] Upgrade snapragon on death[^6]  
 
-[^1]: Potential fix, needs testing    
-[^2]: Ability ID: A00R    
-[^5]: miniBosses file    
+[^1]: Revenant dont respawn   
+[^2]: Potential fix, need test    
+[^5]: potentail fix, need test    
 [^6]: Should work in theory the same as Dragon    

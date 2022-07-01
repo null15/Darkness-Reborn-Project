@@ -8,15 +8,19 @@ rect leftCreeps = Rect(- 11456.0, - 7232.0, - 2528.0, - 1472.0)
 region rightCreepsRegion = CreateRegion()
 region leftCreepsRegion = CreateRegion()
 
+rect respawnHeroRect = Rect(- 96.0, - 5952.0, 96.0, - 5760.0)
+
 init
 
     RegionAddRect(rightCreepsRegion, rightCreepsRect)
     RegionAddRect(leftCreepsRegion, leftCreeps)
     reviveCreepsInit()
+    doAfter(1) -> 
+        CreateUnitAtLoc(Player(11), 'o100' , GetRectCenter(respawnHeroRect), bj_UNIT_FACING)
 
 function reviveCreepsAct()
 
-    if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit())
+    if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit()) and GetUnitTypeId(GetTriggerUnit()) != 'o005'
         let u1 = GetTriggerUnit()
         doAfter(15) ->  
             CreateUnit(GetOwningPlayer(u1), GetUnitTypeId(u1), u1.getX(), u1.getY(), bj_UNIT_FACING)
@@ -24,7 +28,10 @@ function reviveCreepsAct()
         let u2 = GetTriggerUnit()
         doAfter(1) -> 
             CreateUnit(GetOwningPlayer(u2), GetUnitTypeId(u2), u2.getX(), u2.getY(), bj_UNIT_FACING)
-
+    else if GetOwningPlayer(GetTriggerUnit()) == Player(PLAYER_NEUTRAL_AGGRESSIVE) and IsUnitInRegion(rightCreepsRegion, GetTriggerUnit()) and GetUnitTypeId(GetTriggerUnit()) == 'o005'
+        let u3 = GetTriggerUnit()
+        doAfter(15) ->  
+            CreateUnit(GetOwningPlayer(u3), 'o100' , u3.getX(), u3.getY(), bj_UNIT_FACING)
 function reviveCreepsInit()
     CreateTrigger()
     ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)

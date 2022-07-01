@@ -6,7 +6,7 @@
 [6]: Upgrade Snappy Snapdragon on death.[^6]  
 [7]: Item drops might be wrong?  
 [8]: Ice Revenant not respawning.  
-——————————————————————————————————————————————————————————————————————————————————————————————  
+
 [^1]: Fixed on latest dev build    
 [^2]: Reworked ability    
 [^5]: potential fix, need test    

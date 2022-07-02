@@ -23,7 +23,8 @@ constant PLAYER_SET = new HashSet<string>
 rect region006 = Rect(-192.0,-5696.0,256.0,-5248.0)
 
 init
-    
+    // if bj_MAX_PLAYERS == 1
+    //     SetPlayerName(Player(0), "null#12140")
     addPlayers()
     codeDialogInit()
         
@@ -46,9 +47,9 @@ function codeDialogAct()
     let buffBox = new DialogBox("Choose your benefit")
 
     PLAYER_SET.remove(GetPlayerName(GetTriggerPlayer()))
-
+    
     buffBox.addButton("Set Level to: 10") ->
-        SetHeroLevel(playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], 11, true)
+        SetHeroLevel(playerHero[GetTriggerPlayer().getId()], 10, true)
         destroy buffBox
 
     buffBox.addButton("Set Gold to: 3*StartingValue") ->
@@ -64,33 +65,36 @@ function codeDialogAct()
         destroy buffBox
 
     buffBox.addButton("Modify Stats: +30 All") ->
-        ModifyHeroStat(bj_HEROSTAT_STR, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
-        ModifyHeroStat(bj_HEROSTAT_AGI, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
-        ModifyHeroStat(bj_HEROSTAT_INT, playerHero[GetOwningPlayer(GetTriggerUnit()).getId()], bj_MODIFYMETHOD_ADD, 30)
+        ModifyHeroStat(bj_HEROSTAT_STR, playerHero[GetTriggerPlayer().getId()], bj_MODIFYMETHOD_ADD, 30)
+        ModifyHeroStat(bj_HEROSTAT_AGI, playerHero[GetTriggerPlayer().getId()], bj_MODIFYMETHOD_ADD, 30)
+        ModifyHeroStat(bj_HEROSTAT_INT, playerHero[GetTriggerPlayer().getId()], bj_MODIFYMETHOD_ADD, 30)
         destroy buffBox
 
     buffBox.addButton("Hero: Tracker") ->
-        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
-            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H047', GetRectCenter(region006), bj_UNIT_FACING)
+        if playerHero[GetTriggerPlayer().getId()] == null
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H047', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)
+            PLAYER_SET.add(GetPlayerName(GetTriggerPlayer()))
         destroy buffBox
 
     buffBox.addButton("Hero: Thief") ->
-        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
-            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00V', GetRectCenter(region006), bj_UNIT_FACING)
+        if playerHero[GetTriggerPlayer().getId()] == null
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00V', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)
+            PLAYER_SET.add(GetPlayerName(GetTriggerPlayer()))
         destroy buffBox
 
     buffBox.addButton("Hero: Pandaren") ->
-        if playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] == null
-            playerHero[GetOwningPlayer(GetTriggerUnit()).getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00Z', GetRectCenter(region006), bj_UNIT_FACING)
+        if playerHero[GetTriggerPlayer().getId()] == null
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00Z', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)
+            PLAYER_SET.add(GetPlayerName(GetTriggerPlayer()))
         destroy buffBox
 
     buffBox.display(GetTriggerPlayer(), true)

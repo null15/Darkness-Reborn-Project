@@ -144,7 +144,7 @@ public function waves()
     udg_BossWave[23]='njks'
     udg_BossWave[24]='hmtm'
     udg_BossWave[25]='hspt'
-    udg_BossWave[26]='n03E'
+    udg_BossWave[26]='n03C'// n03E
     udg_BossWave[27]='n03C'
     udg_BossWave[28]='n03D'
     udg_BossWave[29]='u00N'

@@ -1619,15 +1619,11 @@ trigger gg_trg_Past_Time_Loop=null
 trigger gg_trg_Paralyzing_Field=null
 trigger gg_trg_Unit_Event_Config=null
 trigger gg_trg_Unit_Event=null
-trigger gg_trg_DoCodeBonus=null
 trigger gg_trg_Untitled_Trigger_001=null
-trigger gg_trg_ACOde=null
 trigger gg_trg_Encrypt_Char=null
 trigger gg_trg_Event=null
 trigger gg_trg_Event_Active=null
 trigger gg_trg_Event_Initialize=null
-trigger gg_trg_Add_Code=null
-trigger gg_trg_Arrow_Deactive=null
 unit gg_unit_h038_0248=null
 
 constant integer Crush___SpellId='A01B'
@@ -20164,15 +20160,15 @@ public function Trig_ChosenHeroe_Actions ()
 	removeTavernDialog.setTitleColor(255, 0, 0, 0)
 	removeTavernDialog.display(true)
 
-	doAfter(30) ->
+	doAfter(240) ->
 		if (runThis == true)
 			runThis = false
 			removeTavern.destr()
 			removeTavernDialog.destr()
-	ForGroupBJ(udg_A_Group[16],function Trig_ChosenHeroe_Func006A)
-	DestroyGroup(udg_A_Group[16])
-	DisableTrigger(gg_trg_Add_Code)
-	DisableTrigger(gg_trg_Player_Left_Game)
+			ForGroupBJ(udg_A_Group[16],function Trig_ChosenHeroe_Func006A)
+			DestroyGroup(udg_A_Group[16])
+			DisableTrigger(gg_trg_Player_Left_Game)
+
 
 public function InitTrig_ChosenHeroe ()
 	gg_trg_ChosenHeroe=CreateTrigger()
@@ -38080,7 +38076,7 @@ public function Trig_Ghostly_Strike_Actions ()
 		DestroyEffectBJ(GetLastCreatedEffectBJ())
 		UnitAddAbilityBJ('A0DS',GetAttacker())
 		SetPlayerAbilityAvailableBJ(false,'A0DS',GetOwningPlayer(GetAttacker()))
-		CreateTextTagUnitBJ(("Evasion "),GetAttacker(),0,10,0.00,100.00,0.00,0)
+		// CreateTextTagUnitBJ(("Evasion "),GetAttacker(),0,10,0.00,100.00,0.00,0)
 		udg_FloatingTextVar[4]=GetLastCreatedTextTag()
 		ShowTextTagForceBJ(true,GetLastCreatedTextTag(),GetPlayersAll())
 		SetTextTagFadepointBJ(GetLastCreatedTextTag(),2.00)

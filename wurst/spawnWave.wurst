@@ -176,7 +176,7 @@ public function waves()
     udg_BossWave[55]='nftt'
     udg_BossWave[56]='n03J'
     udg_BossWave[57]='n03L'
-    udg_BossWave[58]='n03K'
+    udg_BossWave[58]='n03L' // n03K
     udg_BossWave[59]='n02G'
     udg_BossWave[60]='otbr'
     udg_BossWave[61]='ocat'

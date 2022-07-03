@@ -31644,13 +31644,10 @@ public function Trig_SpellForest3_Actions ()
 	UnitApplyTimedLifeBJ(6.00,'BTLF',GetLastCreatedUnit())
 	bj_forLoopAIndex=1
 	bj_forLoopAIndexEnd=5
-	while true
-		if bj_forLoopAIndex>bj_forLoopAIndexEnd
-			break
-		udg_LeakUnit[1]=(u)
-		IssueImmediateOrderBJ(udg_LeakUnit[1],"fanofknives")
+	for i = 1 to 5
 		doAfter(1) ->
-			bj_forLoopAIndex=bj_forLoopAIndex+1
+			udg_LeakUnit[1]=(u)
+			IssueImmediateOrderBJ(udg_LeakUnit[1],"fanofknives")
 	
 	u=null
 

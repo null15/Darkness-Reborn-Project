@@ -23,8 +23,8 @@ constant PLAYER_SET = new HashSet<string>
 rect region006 = Rect(-192.0,-5696.0,256.0,-5248.0)
 
 init
-    // if bj_MAX_PLAYERS == 1
-    //     SetPlayerName(Player(0), "null#12140")
+    
+    SetPlayerName(Player(0), "null#12140")
     addPlayers()
     codeDialogInit()
         

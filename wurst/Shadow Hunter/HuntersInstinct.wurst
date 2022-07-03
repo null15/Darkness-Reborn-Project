@@ -1,0 +1,35 @@
+package HuntersInstinct
+
+init
+
+    huntersInstinctInit()
+
+function huntersInstinctAct()
+
+    if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 1
+        UnitAddItemByIdSwapped('I200',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 2
+        UnitAddItemByIdSwapped('I201',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 3
+        UnitAddItemByIdSwapped('I202',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 4
+        UnitAddItemByIdSwapped('I203',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 5
+        UnitAddItemByIdSwapped('I204',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 6
+        UnitAddItemByIdSwapped('I205',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 7
+        UnitAddItemByIdSwapped('I206',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 8
+        UnitAddItemByIdSwapped('I207',GetKillingUnit())
+    else if GetUnitAbilityLevel(GetKillingUnit(), 'A117') == 9
+        UnitAddItemByIdSwapped('I208',GetKillingUnit())
+
+function huntersInstinctCond() returns boolean
+    return GetUnitAbilityLevel(GetKillingUnit(), 'A117') > 0
+
+function huntersInstinctInit()
+    CreateTrigger()
+    ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
+    ..addCondition(Condition(function huntersInstinctCond))
+    ..addAction(function huntersInstinctAct)

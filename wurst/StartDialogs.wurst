@@ -87,3 +87,9 @@ function startDialog()
         destroy dBox
 
     dBox.display(players[0], true)
+
+    doAfter(15) -> 
+        if udg_A_Damage[90] != 1 and udg_A_Damage[90] != 5 and udg_A_Damage[90] != 10 // could probably use (dBox != null)
+            normalMode()
+            dBox.display(players[0], false)
+            destroy dBox

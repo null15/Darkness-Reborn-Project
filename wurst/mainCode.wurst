@@ -31644,10 +31644,10 @@ public function Trig_SpellForest3_Actions ()
 	UnitApplyTimedLifeBJ(6.00,'BTLF',GetLastCreatedUnit())
 	bj_forLoopAIndex=1
 	bj_forLoopAIndexEnd=5
-	for i = 1 to 5
-		doAfter(1) ->
-			udg_LeakUnit[1]=(u)
-			IssueImmediateOrderBJ(udg_LeakUnit[1],"fanofknives")
+
+	doPeriodicallyCounted(1, 5) (cb) ->
+		udg_LeakUnit[1]=(u)
+		IssueImmediateOrderBJ(udg_LeakUnit[1],"fanofknives")
 	
 	u=null
 
@@ -36581,17 +36581,15 @@ public function Trig_Tracker13_Actions ()
 	SetPlayerAbilityAvailableBJ(false,udg_A_Abilities[13],GetTriggerPlayer())
 	bj_forLoopAIndex=1
 	bj_forLoopAIndexEnd=7
-	while true
-		if bj_forLoopAIndex>bj_forLoopAIndexEnd
-			break
+	
+	doPeriodicallyCounted(1, 7) (CallbackCounted cb) ->
 		udg_A_Damage[8]=R2I((GetUnitStateSwap(UNIT_STATE_MAX_LIFE,udg_A_Unit_Cast[9])*(I2R(GetUnitAbilityLevelSwapped('A0WV',udg_A_Unit_Cast[10]))*0.01)))
 		SetUnitLifeBJ(udg_A_Unit_Cast[9],(GetUnitStateSwap(UNIT_STATE_LIFE,udg_A_Unit_Cast[9])+I2R(udg_A_Damage[8])))
 		CreateTextTagUnitBJ(("|c0020C000+ "+(I2S(udg_A_Damage[8])+"  HP!|r")),udg_A_Unit_Cast[9],0,10.00,100.00,100.00,100,0)
 		SetTextTagVelocityBJ(GetLastCreatedTextTag(),64.00,90)
 		SetTextTagLifespanBJ(GetLastCreatedTextTag(),4.00)
 		SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
-		doAfter(1) ->
-			bj_forLoopAIndex=bj_forLoopAIndex+1
+
 	
 
 public function InitTrig_Tracker13 ()

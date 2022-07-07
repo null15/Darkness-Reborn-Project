@@ -9,7 +9,7 @@ init
     pickHeroInit()
 
 function pickHeroAct()
-    if GetUnitTypeId(GetSellingUnit())=='n00A' or GetUnitTypeId(GetSellingUnit())=='n00B' or GetUnitTypeId(GetSellingUnit())=='n00C'
+    if GetUnitTypeId(GetSellingUnit())=='B119' or GetUnitTypeId(GetSellingUnit())=='B120' or GetUnitTypeId(GetSellingUnit())=='B118'
         for i = 0 to 9
             if GetOwningPlayer(GetSoldUnit()) == Player(i)
                 playerHero[i] = GetSoldUnit()

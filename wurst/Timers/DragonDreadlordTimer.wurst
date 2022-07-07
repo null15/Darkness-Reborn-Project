@@ -11,21 +11,21 @@ integer dragonIndex = 0
 
 init
 
-    DRAGON_TYPE[0] = 'u005'
-    DRAGON_TYPE[1] = 'u006'
-    DRAGON_TYPE[2] = 'u007'
-    DRAGON_TYPE[3] = 'u008'
-    DRAGON_TYPE[4] = 'u009'
-    DRAGON_TYPE[5] = 'u00R'
-    DRAGON_TYPE[6] = 'u00S'
-    DRAGON_TYPE[7] = 'u00T'
+    DRAGON_TYPE[0] = 'U240'
+    DRAGON_TYPE[1] = 'U241'
+    DRAGON_TYPE[2] = 'U242'
+    DRAGON_TYPE[3] = 'U243'
+    DRAGON_TYPE[4] = 'U244'
+    DRAGON_TYPE[5] = 'U245'
+    DRAGON_TYPE[6] = 'U246'
+    DRAGON_TYPE[7] = 'U247'
 
     doAfter(15) -> 
         spawnDreadlord()
         dragonSpawn(0)
 
 function spawnDreadlord()
-    let u = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U00U', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
+    let u = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U248', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
     SetHeroLevelBJ(u,80,false)
     CreateTrigger()
     ..registerUnitEvent(u, EVENT_UNIT_DEATH)
@@ -44,7 +44,7 @@ function spawnDreadlord()
         dreadlordTimerDialog.setTitleColor(255, 255, 0, 0)
         dreadlordTimerDialog.display(true)
         doAfter(30) ->
-            let u2 = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U00V', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
+            let u2 = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U249', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
             SetHeroLevelBJ(u2,80,false)
             CreateTrigger()
             ..registerUnitEvent(u2, EVENT_UNIT_DEATH)
@@ -67,51 +67,51 @@ function dragonSpawn(int num)
     CreateTrigger()
     ..registerUnitEvent(dragon, EVENT_UNIT_DEATH)
     ..addAction() ->
-        if (GetUnitTypeId(GetTriggerUnit())=='u005')
+        if (GetUnitTypeId(GetTriggerUnit())=='U240')
             UnitDropItem(GetTriggerUnit(), items[5])
             createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u006')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U241')
             createItem(items[GetRandomInt(92,93)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(70,80)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u007')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U242')
             createItem(items[GetRandomInt(91,92)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,80)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,80)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u008')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U243')
             createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(74,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u009')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U244')
             createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(93,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,81)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u00R')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U245')
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,82)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u00S')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U246')
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(84,85)], GetTriggerUnit().getPos())
-        else if (GetUnitTypeId(GetTriggerUnit())=='u00T')
+        else if (GetUnitTypeId(GetTriggerUnit())=='U247')
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(91,94)], GetTriggerUnit().getPos())
             createItem(items[GetRandomInt(78,83)], GetTriggerUnit().getPos())

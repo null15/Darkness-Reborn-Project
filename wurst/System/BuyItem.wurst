@@ -1,0 +1,78 @@
+package BuyItem
+import ClosureTimers
+
+unit B101_BASIC1
+unit B102_BASIC2
+unit B103_BASIC3
+unit B104_BASIC4
+
+unit B105_MEDIUM1
+unit B106_MEDIUM2
+unit B107_MEDIUM3
+unit B108_MEDIUM4
+
+unit B110_RARE1
+unit B111_RARE2
+
+unit B112_GEM
+unit B113_CRYSTAL
+
+unit B114_EASYCREEPS
+unit B115_HARDCREEPS
+unit B116_ELITECREEPS
+unit B117_BOSSES
+
+unit array shops
+
+init
+
+    let shopOwner = Player(10)
+    B101_BASIC1 = CreateUnit(shopOwner,'B101',-576.0,-4992.0,270.000)
+    B102_BASIC2 = CreateUnit(shopOwner,'B102',-576.0,-5184.0,270.000)
+    B103_BASIC3 = CreateUnit(shopOwner,'B103',-576.0,-5376.0,270.000)
+    B104_BASIC4 = CreateUnit(shopOwner,'B104',-576.0,-5568.0,270.000)
+    B105_MEDIUM1 = CreateUnit(shopOwner,'B105',-832.0,-4928.0,270.000)
+    B106_MEDIUM2 = CreateUnit(shopOwner,'B106',-832.0,-5120.0,270.000)
+    B107_MEDIUM3 = CreateUnit(shopOwner,'B107',-832.0,-5312.0,270.000)
+    B108_MEDIUM4 = CreateUnit(shopOwner,'B108',-832.0,-5504.0,270.000)
+    // CreateUnit(shopOwner,'B109',-832.0,-5696.0,270.000)
+    B110_RARE1 = CreateUnit(shopOwner,'B110',832.0,-4992.0,270.000)
+    B111_RARE2 = CreateUnit(shopOwner,'B111',832.0,-5248.0,270.000)
+    B112_GEM = CreateUnit(shopOwner,'B112',832.0,-5504.0,270.000)
+    B113_CRYSTAL = CreateUnit(shopOwner,'B113',832.0,-5696.0,270.000)
+    B114_EASYCREEPS = CreateUnit(shopOwner,'B114',576.0,-4992.0,270.000)
+    B115_HARDCREEPS = CreateUnit(shopOwner,'B115',576.0,-5184.0,270.000)
+    B116_ELITECREEPS = CreateUnit(shopOwner,'B117',576.0,-5568.0,270.000)
+    B117_BOSSES = CreateUnit(shopOwner,'B116',576.0,-5376.0,270.000)
+
+    shops[0] = B101_BASIC1
+    shops[1] = B102_BASIC2
+    shops[2] = B103_BASIC3
+    shops[3] = B104_BASIC4
+
+    shops[4] = B105_MEDIUM1
+    shops[5] = B106_MEDIUM2
+    shops[6] = B107_MEDIUM3
+    shops[7] = B108_MEDIUM4
+
+    shops[8] = B110_RARE1
+    shops[9] = B111_RARE2
+    shops[10] = B112_GEM
+    shops[11] = B113_CRYSTAL
+
+    // for i = 0 to 11
+    //     shops[i].suspendXp(true)
+            
+public function buysItem()
+    for i = 0 to 11
+        CreateTrigger()
+        ..registerUnitEvent(shops[i], EVENT_UNIT_SELL)
+        ..addAction() ->
+            print("y")
+            let buyer = GetBuyingUnit()
+            let soldItem = GetSoldItem()
+
+            if buyer.isInventoryFull()
+                printTimed("Your inventory is full my friend", 3)
+            else
+                buyer.addItemHandle(soldItem)

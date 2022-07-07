@@ -2,7 +2,7 @@ package StartDialogs
 import mainCode
 import DialogBox
 import ClosureTimers
-
+import BuyItem
 init
     
     printTimed("Initializing variables...", 3)
@@ -82,12 +82,15 @@ function startDialog()
 
     dBox.addButton("Normal") ->
         normalMode()
+        buysItem()
         destroy dBox
     dBox.addButton("Hard") ->
         hardMode()
+        buysItem()
         destroy dBox
     dBox.addButton("Hell") ->
         hellMode()
+        buysItem()
         destroy dBox
 
     dBox.display(players[0], true)

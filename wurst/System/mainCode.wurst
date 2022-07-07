@@ -1196,7 +1196,7 @@ trigger gg_trg_Encrypt_Char=null
 trigger gg_trg_Event=null
 trigger gg_trg_Event_Active=null
 trigger gg_trg_Event_Initialize=null
-unit gg_unit_h038_0248=null
+unit gg_unit_B121_0248=null
 
 constant integer Crush___SpellId='A01B'
 constant integer Crush___BuffAddId='A0YW'
@@ -4946,32 +4946,16 @@ public function CreateBuildingsForPlayer10 ()
 	integer unitID
 	trigger t
 	real life
-	u=CreateUnit(p,'n03U',576.0,-4992.0,270.000)
-	u=CreateUnit(p,'n03V',576.0,-5184.0,270.000)
-	u=CreateUnit(p,'n00C',-10944.0,-11008.0,270.000)
+	
+	u=CreateUnit(p,'B118',-10944.0,-11008.0,270.000)
 	SetUnitColor(u,ConvertPlayerColor(0))
-	u=CreateUnit(p,'n00B',-10560.0,-11008.0,270.000)
+	u=CreateUnit(p,'B120',-10560.0,-11008.0,270.000)
 	SetUnitColor(u,ConvertPlayerColor(0))
-	u=CreateUnit(p,'n00A',-10176.0,-11008.0,270.000)
+	u=CreateUnit(p,'B119',-10176.0,-11008.0,270.000)
 	SetUnitColor(u,ConvertPlayerColor(0))
-	u=CreateUnit(p,'n04A',576.0,-5568.0,270.000)
 	u=CreateUnit(p,'h04C',-9088.0,-10944.0,270.000)
-	u=CreateUnit(p,'n049',576.0,-5376.0,270.000)
-	gg_unit_h038_0248=CreateUnit(p,'h038',0.0,-4096.0,270.000)
-	u=CreateUnit(p,'h039',-832.0,-4928.0,270.000)
-	u=CreateUnit(p,'h03B',-832.0,-5120.0,270.000)
-	u=CreateUnit(p,'h03C',-832.0,-5312.0,270.000)
-	u=CreateUnit(p,'h03D',-832.0,-5504.0,270.000)
-	u=CreateUnit(p,'h03A',-832.0,-5696.0,270.000)
-	u=CreateUnit(p,'h03E',-576.0,-4992.0,270.000)
-	u=CreateUnit(p,'h03F',-576.0,-5184.0,270.000)
-	u=CreateUnit(p,'h03G',-576.0,-5376.0,270.000)
-	u=CreateUnit(p,'h03H',-576.0,-5568.0,270.000)
-	u=CreateUnit(p,'n03M',832.0,-5696.0,270.000)
-	u=CreateUnit(p,'n03N',832.0,-4992.0,270.000)
-	u=CreateUnit(p,'n03O',832.0,-5248.0,270.000)
-	u=CreateUnit(p,'h03J',832.0,-5504.0,270.000)
-	u=CreateUnit(p,'n03P',32.0,-5472.0,270.000)
+	gg_unit_B121_0248=CreateUnit(p,'B121',0.0,-4096.0,270.000)
+	u=CreateUnit(p,'B100',32.0,-5472.0,270.000)
 
 public function CreateNeutralHostileBuildings ()
 	player p=Player(PLAYER_NEUTRAL_AGGRESSIVE)
@@ -4979,7 +4963,7 @@ public function CreateNeutralHostileBuildings ()
 	integer unitID
 	trigger t
 	real life
-	u=CreateUnit(p,'n04N',9984.0,2048.0,270.000)
+	u=CreateUnit(p,'U250',9984.0,2048.0,270.000)
 
 public function CreateNeutralHostile ()
 	player p=Player(PLAYER_NEUTRAL_AGGRESSIVE)
@@ -4987,89 +4971,89 @@ public function CreateNeutralHostile ()
 	integer unitID
 	trigger t
 	real life
-	u=CreateUnit(p,'n00T',-10822.6,-3291.4,264.667)
-	u=CreateUnit(p,'n00D',-10819.2,-6372.5,58.163)
-	u=CreateUnit(p,'n00L',-10838.3,-4785.7,210.603)
-	u=CreateUnit(p,'n00E',-9253.2,-6328.1,239.432)
+	u=CreateUnit(p,'U224',-10822.6,-3291.4,264.667)
+	u=CreateUnit(p,'U212',-10819.2,-6372.5,58.163)
+	u=CreateUnit(p,'U218',-10838.3,-4785.7,210.603)
+	u=CreateUnit(p,'U213',-9253.2,-6328.1,239.432)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00M',-9252.0,-4799.0,294.256)
+	u=CreateUnit(p,'U219',-9252.0,-4799.0,294.256)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00U',-9252.2,-3259.9,201.133)
+	u=CreateUnit(p,'U225',-9252.2,-3259.9,201.133)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00F',-7699.6,-6322.5,258.527)
-	u=CreateUnit(p,'n00N',-7688.5,-4801.8,187.158)
+	u=CreateUnit(p,'U214',-7699.6,-6322.5,258.527)
+	u=CreateUnit(p,'U220',-7688.5,-4801.8,187.158)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00I',-4667.0,-6305.7,316.324)
-	u=CreateUnit(p,'n00H',-3158.1,-3258.7,275.941)
-	u=CreateUnit(p,'n00J',-3106.2,-6314.8,266.688)
+	u=CreateUnit(p,'U216',-4667.0,-6305.7,316.324)
+	u=CreateUnit(p,'U229',-3158.1,-3258.7,275.941)
+	u=CreateUnit(p,'U217',-3106.2,-6314.8,266.688)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00O',-6166.8,-4779.5,207.483)
-	u=CreateUnit(p,'n00P',-3060.5,-4801.6,239.268)
+	u=CreateUnit(p,'U221',-6166.8,-4779.5,207.483)
+	u=CreateUnit(p,'U223',-3060.5,-4801.6,239.268)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00S',-6154.0,-3337.0,289.641)
-	u=CreateUnit(p,'n00V',-4647.6,-3288.3,308.099)
+	u=CreateUnit(p,'U227',-6154.0,-3337.0,289.641)
+	u=CreateUnit(p,'U228',-4647.6,-3288.3,308.099)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n010',-3108.3,-1740.7,256.862)
-	u=CreateUnit(p,'n00Z',-4654.7,-1692.5,266.368)
+	u=CreateUnit(p,'U235',-3108.3,-1740.7,256.862)
+	u=CreateUnit(p,'U234',-4654.7,-1692.5,266.368)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00W',-9300.5,-1767.5,317.141)
-	u=CreateUnit(p,'n00X',-7750.0,-1752.4,220.118)
+	u=CreateUnit(p,'U231',-9300.5,-1767.5,317.141)
+	u=CreateUnit(p,'U232',-7750.0,-1752.4,220.118)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00K',-10854.5,-1736.9,253.277)
-	u=CreateUnit(p,'n00Q',-4627.7,-4778.2,347.706)
+	u=CreateUnit(p,'U230',-10854.5,-1736.9,253.277)
+	u=CreateUnit(p,'U222',-4627.7,-4778.2,347.706)
 	SetUnitState(u,UNIT_STATE_MANA,0)
-	u=CreateUnit(p,'n00R',-7749.1,-3264.1,251.410)
-	u=CreateUnit(p,'n00Y',-6170.3,-1711.0,264.201)
-	u=CreateUnit(p,'n00G',-6206.7,-6308.4,268.097)
-	u=CreateUnit(p,'n054',-299.4,-11006.3,85.758)
-	// u=CreateUnit(p,'n012',3207.3,-6654.7,83.334)
-	// u=CreateUnit(p,'n014',6854.7,-6696.6,220.579)
-	// u=CreateUnit(p,'n015',10504.7,-6665.4,35.004)
-	// u=CreateUnit(p,'n013',8565.8,-6675.9,187.257)
-	// u=CreateUnit(p,'z000',4992.6,-6626.5,34.366)
-	// u=CreateUnit(p,'o005',8599.3,-3502.0,27.522)
+	u=CreateUnit(p,'U226',-7749.1,-3264.1,251.410)
+	u=CreateUnit(p,'U233',-6170.3,-1711.0,264.201)
+	u=CreateUnit(p,'U215',-6206.7,-6308.4,268.097)
+	u=CreateUnit(p,'U260',-299.4,-11006.3,85.758)
+	// u=CreateUnit(p,'U200',3207.3,-6654.7,83.334)
+	// u=CreateUnit(p,'U202',6854.7,-6696.6,220.579)
+	// u=CreateUnit(p,'U204',10504.7,-6665.4,35.004)
+	// u=CreateUnit(p,'U203',8565.8,-6675.9,187.257)
+	// u=CreateUnit(p,'U201',4992.6,-6626.5,34.366)
+	// u=CreateUnit(p,'U206',8599.3,-3502.0,27.522)
 	// SetUnitState(u,UNIT_STATE_MANA,0)
-	// u=CreateUnit(p,'n016',10657.4,-3533.2,350.277)
+	// u=CreateUnit(p,'U205',10657.4,-3533.2,350.277)
 	// SetUnitState(u,UNIT_STATE_MANA,0)
-	// u=CreateUnit(p,'h00C',3171.0,-3410.3,312.285)
-	// u=CreateUnit(p,'h00D',5018.1,-3412.7,192.333)
-	// u=CreateUnit(p,'u004',6764.5,-3471.8,278.607)
+	// u=CreateUnit(p,'U211',3171.0,-3410.3,312.285)
+	// u=CreateUnit(p,'U210',5018.1,-3412.7,192.333)
+	// u=CreateUnit(p,'U209',6764.5,-3471.8,278.607)
 
-	// u=CreateUnit(p,'e006',-7832.5,-750.9,47.555)
-	// u=CreateUnit(p,'e006',-6298.5,-764.2,127.169)
-	// u=CreateUnit(p,'e006',-6294.3,695.0,222.003)
-	// u=CreateUnit(p,'e006',-7822.2,780.4,318.056)
-	// u=CreateUnit(p,'e006',-7789.1,-53.5,358.679)
-	// u=CreateUnit(p,'e006',-6286.9,-89.2,165.753)
-	// u=CreateUnit(p,'e006',-7031.2,-768.5,91.851)
-	// u=CreateUnit(p,'e006',-7006.7,758.1,275.264)
-	// u=CreateUnit(p,'e006',-6633.5,367.1,203.337)
-	// u=CreateUnit(p,'e006',-7414.1,351.4,317.575)
-	// u=CreateUnit(p,'e006',-7381.4,-392.5,64.190)
-	// u=CreateUnit(p,'e006',-6684.1,-407.8,135.025)
+	// u=CreateUnit(p,'U258',-7832.5,-750.9,47.555)
+	// u=CreateUnit(p,'U258',-6298.5,-764.2,127.169)
+	// u=CreateUnit(p,'U258',-6294.3,695.0,222.003)
+	// u=CreateUnit(p,'U258',-7822.2,780.4,318.056)
+	// u=CreateUnit(p,'U258',-7789.1,-53.5,358.679)
+	// u=CreateUnit(p,'U258',-6286.9,-89.2,165.753)
+	// u=CreateUnit(p,'U258',-7031.2,-768.5,91.851)
+	// u=CreateUnit(p,'U258',-7006.7,758.1,275.264)
+	// u=CreateUnit(p,'U258',-6633.5,367.1,203.337)
+	// u=CreateUnit(p,'U258',-7414.1,351.4,317.575)
+	// u=CreateUnit(p,'U258',-7381.4,-392.5,64.190)
+	// u=CreateUnit(p,'U258',-6684.1,-407.8,135.025)
 
-	// u=CreateUnit(p,'n011',-11029.3,769.6,293.421)
-	// u=CreateUnit(p,'n011',-9193.1,705.2,53.241)
-	// u=CreateUnit(p,'n011',-10999.5,-733.2,99.616)
-	// u=CreateUnit(p,'n011',-9182.1,-802.5,145.771)
-	// u=CreateUnit(p,'n011',-11090.3,-16.2,336.478)
-	// u=CreateUnit(p,'n011',-9196.8,-38.9,124.732)
-	// u=CreateUnit(p,'n011',-10064.9,777.2,209.538)
-	// u=CreateUnit(p,'n011',-10086.6,-794.5,94.947)
-	// u=CreateUnit(p,'n011',-10592.7,-365.9,99.616)
-	// u=CreateUnit(p,'n011',-10584.6,310.5,99.616)
-	// u=CreateUnit(p,'n011',-9608.1,365.4,99.616)
-	// u=CreateUnit(p,'n011',-9667.9,-370.4,99.616)
+	// u=CreateUnit(p,'U259',-11029.3,769.6,293.421)
+	// u=CreateUnit(p,'U259',-9193.1,705.2,53.241)
+	// u=CreateUnit(p,'U259',-10999.5,-733.2,99.616)
+	// u=CreateUnit(p,'U259',-9182.1,-802.5,145.771)
+	// u=CreateUnit(p,'U259',-11090.3,-16.2,336.478)
+	// u=CreateUnit(p,'U259',-9196.8,-38.9,124.732)
+	// u=CreateUnit(p,'U259',-10064.9,777.2,209.538)
+	// u=CreateUnit(p,'U259',-10086.6,-794.5,94.947)
+	// u=CreateUnit(p,'U259',-10592.7,-365.9,99.616)
+	// u=CreateUnit(p,'U259',-10584.6,310.5,99.616)
+	// u=CreateUnit(p,'U259',-9608.1,365.4,99.616)
+	// u=CreateUnit(p,'U259',-9667.9,-370.4,99.616)
 
-	u=CreateUnit(p,'n054',32.5,-11014.0,91.618)
-	u=CreateUnit(p,'n054',397.8,-10988.3,90.279)
-	u=CreateUnit(p,'n054',-166.5,-10846.4,85.479)
-	u=CreateUnit(p,'n054',-134.5,-11172.7,84.970)
-	u=CreateUnit(p,'n054',230.6,-10871.2,85.479)
-	u=CreateUnit(p,'n054',226.7,-11168.0,97.625)
-	u=CreateUnit(p,'n054',576.5,-11137.2,90.980)
-	u=CreateUnit(p,'n054',-445.6,-11158.6,75.541)
-	u=CreateUnit(p,'n054',7.9,-10693.7,85.479)
+	u=CreateUnit(p,'U260',32.5,-11014.0,91.618)
+	u=CreateUnit(p,'U260',397.8,-10988.3,90.279)
+	u=CreateUnit(p,'U260',-166.5,-10846.4,85.479)
+	u=CreateUnit(p,'U260',-134.5,-11172.7,84.970)
+	u=CreateUnit(p,'U260',230.6,-10871.2,85.479)
+	u=CreateUnit(p,'U260',226.7,-11168.0,97.625)
+	u=CreateUnit(p,'U260',576.5,-11137.2,90.980)
+	u=CreateUnit(p,'U260',-445.6,-11158.6,75.541)
+	u=CreateUnit(p,'U260',7.9,-10693.7,85.479)
 
 public function CreatePlayerBuildings ()
 	CreateBuildingsForPlayer10()
@@ -5987,8 +5971,8 @@ public function Trig_NO_LURE_Func002C () returns boolean
 public function Trig_NO_LURE_Actions ()
 	udg_A_Group[99]=GetUnitsInRectMatching(GetPlayableMapRect(),Condition(function Trig_NO_LURE_Func001002002))
 	if(Trig_NO_LURE_Func002C())
-		KillUnit(gg_unit_h038_0248)
-		DisplayTextToForce(GetPlayersAll(),"|c00FF0303 Monsters has now exceeded the number of allowed .|r")
+		KillUnit(gg_unit_B121_0248)
+		DisplayTextToForce(GetPlayersAll(),"|c00FF0303 Monsters has now exceeded the number of total allowed .|r")
 	else
 	
 	DestroyGroup(udg_A_Group[99])
@@ -6326,7 +6310,7 @@ public function Trig_Player_Left_Game_Func003A ()
 	RemoveUnit(GetEnumUnit())
 
 public function Trig_Player_Left_Game_Actions ()
-	DisplayTextToForce(GetPlayersAll(),(("|c00FF0303"+(GetPlayerName(GetTriggerPlayer())+"|r"))+"has left the game !?!"))
+	DisplayTextToForce(GetPlayersAll(),(("|c00FF0303"+(GetPlayerName(GetTriggerPlayer())+"|r"))+" has left the game !?!"))
 	udg_A_Group[17]=GetUnitsOfPlayerAll(GetTriggerPlayer())
 	ForGroupBJ(udg_A_Group[17],function Trig_Player_Left_Game_Func003A)
 	DestroyGroup(udg_A_Group[17])
@@ -6610,49 +6594,49 @@ public function Trig_TowerBossDie_Func002C () returns boolean
 	return true
 
 public function Trig_TowerBossDie_Func003C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n04N'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U250'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func004C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u015'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U251'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func005C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u017'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U252'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func006C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u016'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U253'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func007C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u014'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U254'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func008C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u013'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U255'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func009C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u012'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U256'))
 		return false
 	
 	return true
 
 public function Trig_TowerBossDie_Func010C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u010'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U257'))
 		return false
 	
 	return true
@@ -6669,44 +6653,44 @@ public function Trig_TowerBossDie_Actions ()
 	if(Trig_TowerBossDie_Func003C())
 		CreateItemLoc('I0C2',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u015',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U251',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func004C())
 		CreateItemLoc('I0HD',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u017',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U252',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func005C())
 		CreateItemLoc('I0BV',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u016',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U253',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func006C())
 		CreateItemLoc('I0HM',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u014',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U254',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func007C())
 		CreateItemLoc('I0HT',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u013',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U255',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func008C())
 		CreateItemLoc('I0AW',GetUnitLoc(GetDyingUnit()))
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u012',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U256',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	else
 	
 	if(Trig_TowerBossDie_Func009C())
 		CreateItemLoc('I0C1',GetUnitLoc(GetDyingUnit()))
 
 		doAfter(15) ->
-			CreateNUnitsAtLoc(1,'u010',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U257',Player(11),GetRectCenter(gg_rct_Region_044),bj_UNIT_FACING)
 	
 	if(Trig_TowerBossDie_Func010C())
 		CreateItemLoc('I0AK',GetUnitLoc(GetTriggerUnit()))
@@ -7634,145 +7618,145 @@ public function Trig_Roll_Item_Creep_Conditions () returns boolean
 	return true
 
 public function Trig_Roll_Item_Creep_Func001C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00F'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U214'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func002C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00D'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U212'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func003C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00E'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U213'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func004C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00G'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U215'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func005C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00I'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U216'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func006C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00J'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U217'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func007C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00L'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U218'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func008C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00M'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U219'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func009C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00N'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U220'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func010C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00O'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U221'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func011C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00Q'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U222'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func012C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00P'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U223'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func013C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00T'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U224'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func014C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00U'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U225'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func015C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00R'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U226'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func016C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00S'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U227'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func017C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00V'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U228'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func018C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00H'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U229'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func019C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00K'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U230'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func020C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00W'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U231'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func021C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00X'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U232'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func022C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00Y'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U233'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func023C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n00Z'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U234'))
 		return false
 	
 	return true
 
 public function Trig_Roll_Item_Creep_Func024C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n010'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U235'))
 		return false
 	
 	return true
@@ -7888,7 +7872,7 @@ public function Trig_Roll_Item_BossForest_Conditions () returns boolean
 	return true
 
 public function Trig_Roll_Item_BossForest_Func001C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n012'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U200'))
 		return false
 	
 	if(not(GetRandomInt(1,100)<=25))
@@ -7909,13 +7893,13 @@ public function Trig_Roll_Item_BossForest_Func002Func002C () returns boolean
 	return true
 
 public function Trig_Roll_Item_BossForest_Func002C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='z000')
+	if(GetUnitTypeId(GetTriggerUnit())=='U201')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func003C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n014'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U202'))
 		return false
 	
 	if(not(GetRandomInt(1,100)<=25))
@@ -7924,7 +7908,7 @@ public function Trig_Roll_Item_BossForest_Func003C () returns boolean
 	return true
 
 public function Trig_Roll_Item_BossForest_Func004C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n013'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U203'))
 		return false
 	
 	if(not(GetRandomInt(1,100)<=25))
@@ -7933,7 +7917,7 @@ public function Trig_Roll_Item_BossForest_Func004C () returns boolean
 	return true
 
 public function Trig_Roll_Item_BossForest_Func005C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n015'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U204'))
 		return false
 	
 	if(not(GetRandomInt(1,100)<=25))
@@ -7942,43 +7926,43 @@ public function Trig_Roll_Item_BossForest_Func005C () returns boolean
 	return true
 
 public function Trig_Roll_Item_BossForest_Func006C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='u004')
+	if(GetUnitTypeId(GetTriggerUnit())=='U209')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func007C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='o005' or GetUnitTypeId(GetTriggerUnit())=='o100' or GetUnitTypeId(GetTriggerUnit())=='o101')
+	if(GetUnitTypeId(GetTriggerUnit())=='U206' or GetUnitTypeId(GetTriggerUnit())=='U207' or GetUnitTypeId(GetTriggerUnit())=='U208')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func008C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='n016')
+	if(GetUnitTypeId(GetTriggerUnit())=='U205')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func009C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='n04X')
+	if(GetUnitTypeId(GetTriggerUnit())=='U236')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func010C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='n04Y')
+	if(GetUnitTypeId(GetTriggerUnit())=='U237')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func011C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='n04Z')
+	if(GetUnitTypeId(GetTriggerUnit())=='U238')
 		return true
 	else
 		return false
 
 public function Trig_Roll_Item_BossForest_Func012C () returns boolean
-	if(GetUnitTypeId(GetTriggerUnit())=='n02K')
+	if(GetUnitTypeId(GetTriggerUnit())=='U239')
 		return true
 	else
 		return false
@@ -8032,7 +8016,7 @@ public function Trig_Roll_Item_BossForest_Actions ()
 		CreateItemLoc(items[140],GetRectCenter(gg_rct_Region_065))
 		CreateItemLoc('I0B7',GetRectCenter(gg_rct_Region_065))
 		doAfter(2) ->
-			CreateNUnitsAtLoc(1,'n04Y',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U237',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
 			SetUnitAbilityLevelSwapped('wtex',GetLastCreatedUnit(),2)
 			SetUnitAbilityLevelSwapped('A0ZJ',GetLastCreatedUnit(),2)
 	
@@ -8042,7 +8026,7 @@ public function Trig_Roll_Item_BossForest_Actions ()
 		CreateItemLoc(items[140],GetRectCenter(gg_rct_Region_065))
 		CreateItemLoc(items[85],GetRectCenter(gg_rct_Region_065))
 		doAfter(30) ->
-			CreateNUnitsAtLoc(1,'n04Z',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U238',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
 			SetUnitAbilityLevelSwapped('wtex',GetLastCreatedUnit(),3)
 			CreateItemLoc('I0JF',GetRectCenter(gg_rct_Region_065))
 			SetUnitAbilityLevelSwapped('A0ZJ',GetLastCreatedUnit(),3)
@@ -8055,7 +8039,7 @@ public function Trig_Roll_Item_BossForest_Actions ()
 		CreateItemLoc(items[86],GetRectCenter(gg_rct_Region_065))
 		CreateItemLoc('I0JG',GetRectCenter(gg_rct_Region_065))
 		doAfter(30) ->
-			CreateNUnitsAtLoc(1,'n02K',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
+			CreateNUnitsAtLoc(1,'U239',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
 			SetUnitAbilityLevelSwapped('wtex',GetLastCreatedUnit(),3)
 			SetUnitAbilityLevelSwapped('A0ZJ',GetLastCreatedUnit(),4)
 	
@@ -8896,7 +8880,7 @@ public function Trig_Victory_NORMAL_Func001Func003A ()
 	CustomDefeatBJ(GetEnumPlayer(),"|c00FF0303 ~ GAME OVER ~ |r")
 
 public function Trig_Victory_NORMAL_Func001C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_h038_0248)))
+	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_B121_0248)))
 		return false
 	
 	return true
@@ -8912,13 +8896,13 @@ public function Trig_Victory_NORMAL_Func002C () returns boolean
 
 public function Trig_Victory_NORMAL_Actions ()
 	if(Trig_Victory_NORMAL_Func001C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303 ElementSoul defeated !Game Over 60s later |r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303Elemental Soul has been defeated! Game will end in 60s!|r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_NORMAL_Func001Func003A)
 	else
 	
 	if(Trig_Victory_NORMAL_Func002C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c000042FF You Win ! NORMAL MODE , You can play continue with Hard mode or Hell to_ Hell mode .Contact with us and get code at facebook : www.facebook.com/DarknessRebornWarcraftMap Maker :D_warThanks you and see you again at next version|r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c000042FFYou beat Normal Mode! Congratulations! Submit a replay of this game to the Darkness Reborn Discord to be able to use special benefits for your next playthrough |r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_NORMAL_Func002Func003A)
 	else
@@ -8934,7 +8918,7 @@ public function Trig_Victory_HARD_Func001Func003A ()
 	CustomDefeatBJ(GetEnumPlayer(),"|c00FF0303 ~ GAME OVER ~ |r")
 
 public function Trig_Victory_HARD_Func001C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_h038_0248)))
+	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_B121_0248)))
 		return false
 	
 	return true
@@ -8950,13 +8934,13 @@ public function Trig_Victory_HARD_Func002C () returns boolean
 
 public function Trig_Victory_HARD_Actions ()
 	if(Trig_Victory_HARD_Func001C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303 ElementSoul defeated !Game Over 60s later |r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303Elemental Soul has been defeated! Game will end in 60s!|r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_HARD_Func001Func003A)
 	else
 	
 	if(Trig_Victory_HARD_Func002C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FFFC01 *****You Win ! HARD MODE , You can play continue with HELL TO HELL  mode .Contact with us and get code at facebook : www.facebook.com/DarknessRebornWarcraftMap Maker :D_warThanks you and see you again at next version .|r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FFFC01You beat HARD Mode! Congratulations! Submit a replay of this game to the Darkness Reborn Discord to be able to use special benefits for your next playthrough |r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_HARD_Func002Func003A)
 	else
@@ -8972,7 +8956,7 @@ public function Trig_Victory_HELL_Func001Func003A ()
 	CustomDefeatBJ(GetEnumPlayer(),"|c00FF0303 ~ GAME OVER ~ |r")
 
 public function Trig_Victory_HELL_Func001C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_h038_0248)))
+	if(not(GetUnitTypeId(GetDyingUnit())==GetUnitTypeId(gg_unit_B121_0248)))
 		return false
 	
 	return true
@@ -8988,13 +8972,13 @@ public function Trig_Victory_HELL_Func002C () returns boolean
 
 public function Trig_Victory_HELL_Actions ()
 	if(Trig_Victory_HELL_Func001C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303 ElementSoul defeated !Game Over 60s later |r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303Elemental Soul has been defeated! Game will end in 60s!|r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_HELL_Func001Func003A)
 	else
 	
 	if(Trig_Victory_HELL_Func002C())
-		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303 *****You Win ! You are Legends !Contact with us and get code at facebook : www.facebook.com/DarknessRebornWarcraftMap Maker :D_warThanks you and see you again at next version.|r")
+		DisplayTimedTextToForce(GetPlayersAll(),90.00,"|c00FF0303You beat HELL Mode! Congratulations! Submit a replay of this game to the Darkness Reborn Discord to be able to use special benefits for your next playthrough |r")
 		doAfter(60) ->
 			ForForce(GetPlayersAll(),function Trig_Victory_HELL_Func002Func003A)
 	else
@@ -9022,7 +9006,7 @@ public function RK_Clean_Items_Action ()
 
 
 public function RK_Clean_Items_Timer_Start ()
-	DisplayTextToForce(GetPlayersAll(),("|cffff2020" + GetPlayerName(GetTriggerPlayer()) + " is requesting item clean in_ 10s.|r"))
+	DisplayTextToForce(GetPlayersAll(),("|cffff2020" + GetPlayerName(GetTriggerPlayer()) + " is requesting an item clean in 10s.|r"))
 	if (RK_Is_Troll(GetPlayerName(GetTriggerPlayer()))) 
 		return
 	
@@ -9411,7 +9395,7 @@ public function Trig_ChosenHeroe_Actions ()
 	let removeTavern = CreateTimer()
 	let removeTavernDialog = CreateTimerDialog(removeTavern)
 
-	CreateNUnitsAtLoc(1,'n04X',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
+	CreateNUnitsAtLoc(1,'U236',Player(PLAYER_NEUTRAL_AGGRESSIVE),GetRectCenter(gg_rct_Region_056),bj_UNIT_FACING)
 	udg_A_Damage[97]=0
 	udg_A_Group[16]=GetUnitsInRectAll(gg_rct_Region_030)
 
@@ -9473,13 +9457,13 @@ public function InitTrig_UnitTakeDamage ()
 	TriggerAddAction(gg_trg_UnitTakeDamage,function Trig_UnitTakeDamage_Actions)
 
 public function Trig_One_Hero_Func005C () returns boolean
-	if((GetUnitTypeId(GetSellingUnit())=='n00A'))
+	if((GetUnitTypeId(GetSellingUnit())=='B119'))
 		return true
 	
-	if((GetUnitTypeId(GetSellingUnit())=='n00B'))
+	if((GetUnitTypeId(GetSellingUnit())=='B120'))
 		return true
 	
-	if((GetUnitTypeId(GetSellingUnit())=='n00C'))
+	if((GetUnitTypeId(GetSellingUnit())=='B118'))
 		return true
 	
 	if((GetUnitTypeId(GetSellingUnit())=='h04C'))
@@ -10352,19 +10336,19 @@ public function Trig_EnterMap_Func010C () returns boolean
 	return true
 
 public function Trig_EnterMap_Func011C () returns boolean
-	if(not GetBooleanOr((GetUnitTypeId(GetTriggerUnit())=='U00U'),(GetUnitTypeId(GetTriggerUnit())=='U00V')))
+	if(not GetBooleanOr((GetUnitTypeId(GetTriggerUnit())=='U248'),(GetUnitTypeId(GetTriggerUnit())=='U249')))
 		return false
 	
 	return true
 
 public function Trig_EnterMap_Func012C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u014'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U254'))
 		return false
 	
 	return true
 
 public function Trig_EnterMap_Func013C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='u013'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U255'))
 		return false
 	
 	return true
@@ -10382,25 +10366,25 @@ public function Trig_EnterMap_Func015C () returns boolean
 	return true
 
 public function Trig_EnterMap_Func016C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n04X'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U236'))
 		return false
 	
 	return true
 
 public function Trig_EnterMap_Func017C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n04Y'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U237'))
 		return false
 	
 	return true
 
 public function Trig_EnterMap_Func018C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n04Z'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U238'))
 		return false
 	
 	return true
 
 public function Trig_EnterMap_Func019C () returns boolean
-	if(not(GetUnitTypeId(GetTriggerUnit())=='n02K'))
+	if(not(GetUnitTypeId(GetTriggerUnit())=='U239'))
 		return false
 	
 	return true
@@ -11419,7 +11403,7 @@ public function Trig_DeathKing_Aura_Func004Func002C () returns boolean
 	return true
 
 public function Trig_DeathKing_Aura_Func004C () returns boolean
-	if(not(GetUnitTypeId(GetAttackedUnitBJ())=='n02K'))
+	if(not(GetUnitTypeId(GetAttackedUnitBJ())=='U239'))
 		return false
 	
 	return true
@@ -12020,7 +12004,7 @@ public function Trig_OneItem_Actions ()
 		udg_ItemUnit[2]=UnitItemInSlotBJ(udg_OneItemUnit,udg_Kill[6])
 		if(Trig_OneItem_Func004Func002C())
 			if(Trig_OneItem_Func004Func002Func001C())
-				DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_OneItemUnit)),"Can't you use same item ")
+				DisplayTextToForce(GetForceOfPlayer(GetOwningPlayer(udg_OneItemUnit)),"You can't use two of the same item")
 				UnitRemoveItemSwapped(udg_ItemUnit[1],udg_OneItemUnit)
 			else
 			
@@ -14220,7 +14204,6 @@ public function Trig_BM_Revive_Actions ()
 		ModifyHeroStat(bj_HEROSTAT_AGI,GetTriggerUnit(),bj_MODIFYMETHOD_SUB,(udg_Kill[2]*15))
 		ModifyHeroStat(bj_HEROSTAT_INT,GetTriggerUnit(),bj_MODIFYMETHOD_SUB,(udg_Kill[2]*15))
 	else
-	
 
 public function InitTrig_BM_Revive ()
 	gg_trg_BM_Revive=CreateTrigger()
@@ -23925,7 +23908,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func010Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func010C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='n015'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U204'))
 		return false
 	
 	return true
@@ -23937,7 +23920,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func011Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func011C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='n014'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U202'))
 		return false
 	
 	return true
@@ -23949,7 +23932,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func012Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func012C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='n013'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U203'))
 		return false
 	
 	return true
@@ -23961,7 +23944,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func013Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func013C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='o005' or GetUnitTypeId(udg_A_Unit_Cast[18])=='o100' or GetUnitTypeId(udg_A_Unit_Cast[18])=='o101'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U206' or GetUnitTypeId(udg_A_Unit_Cast[18])=='U207' or GetUnitTypeId(udg_A_Unit_Cast[18])=='U208'))
 		return false
 	
 	return true
@@ -23973,7 +23956,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func014Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func014C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='n016'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U205'))
 		return false
 	
 	return true
@@ -23985,7 +23968,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func015Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func015C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='u004'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U209'))
 		return false
 	
 	return true
@@ -23997,7 +23980,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func016Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func016C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U00U'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U248'))
 		return false
 	
 	return true
@@ -24009,7 +23992,7 @@ public function Trig_Steal_Func003Func007Func001Func001Func017Func001C () return
 	return true
 
 public function Trig_Steal_Func003Func007Func001Func001Func017C () returns boolean
-	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U00V'))
+	if(not(GetUnitTypeId(udg_A_Unit_Cast[18])=='U249'))
 		return false
 	
 	return true
@@ -27107,7 +27090,7 @@ public function Trig_Wolf_Spirit_4_Func003C () returns boolean
 	return true
 
 public function Trig_Wolf_Spirit_4_Func004Func001C () returns boolean
-	if(not(GetUnitTypeId(GetDyingUnit())=='n014'))
+	if(not(GetUnitTypeId(GetDyingUnit())=='U202'))
 		return false
 	
 	return true
@@ -31488,23 +31471,6 @@ public function InitTrig_Space_Time_Loop ()
 	TriggerAddAction(gg_trg_Space_Time_Loop,function Trig_Space_Time_Loop_Actions)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public function Trig_Past_Time_Conditions () returns boolean
 	if(not(GetSpellAbilityId()=='A0ND'))
 		return false
@@ -31570,25 +31536,6 @@ public function InitTrig_Past_Time ()
 	TriggerRegisterAnyUnitEventBJ(gg_trg_Past_Time,EVENT_PLAYER_UNIT_SPELL_EFFECT)
 	TriggerAddCondition(gg_trg_Past_Time,Condition(function Trig_Past_Time_Conditions))
 	TriggerAddAction(gg_trg_Past_Time,function Trig_Past_Time_Actions)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 public function Trig_Past_Time_Act_Conditions () returns boolean
@@ -31678,351 +31625,6 @@ public function InitTrig_Past_Time_Loop ()
 	DisableTrigger(gg_trg_Past_Time_Loop)
 	TriggerRegisterTimerEventPeriodic(gg_trg_Past_Time_Loop,0.03)
 	TriggerAddAction(gg_trg_Past_Time_Loop,function Trig_Past_Time_Loop_Actions)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public function Trig_Unit_Event_Config_Actions ()
-	udg_DetectRemoveAbility='A0X0'
-	udg_DetectTransformAbility='A0X1'
-	udg_UnitIndexEvent=-1.0
-	ExecuteFunc("UnitEventInit")
-	udg_UnitIndexEvent=3.0
-
-public function InitTrig_Unit_Event_Config ()
-	gg_trg_Unit_Event_Config=CreateTrigger()
-	TriggerAddAction(gg_trg_Unit_Event_Config,function Trig_Unit_Event_Config_Actions)
-
-
-
-
-//===========================================================================
-public function UnitEventDestroyGroup (integer i )
-	if udg_CargoTransportGroup[i] != null 
-		DestroyGroup(udg_CargoTransportGroup[i])
-		udg_CargoTransportGroup[i] = null
-	
-
-public function UnitEventCheckAfter ()
-	integer i = 0
-	while true
-		i = udg_CheckDeathList[i]
-		if i == 0
-			break
-		udg_UDex = i
-		if udg_IsUnitNew[i] 
-			//The unit was just created.
-			udg_IsUnitNew[i] = false
-			udg_UnitIndexEvent = 1.50 //New event requested by SpellBound to_ detect when unit fully enters scope.
-			udg_UnitIndexEvent = 0.00
-		else if udg_IsUnitTransforming[i] 
-			//Added 21 July 2017 to_ fix the issue re-adding this_ ability in_ the same instant
-			udg_UnitTypeEvent = 0.00
-			udg_UnitTypeEvent = 1.00
-			udg_UnitTypeOf[i] = GetUnitTypeId(udg_UDexUnits[i]) //Set this_ afterward to_ give the user extra reference
-			udg_IsUnitTransforming[i] = false
-			UnitAddAbility(udg_UDexUnits[i], udg_DetectTransformAbility)
-		else if udg_IsUnitAlive[i] 
-			//The unit has started reincarnating.
-			udg_IsUnitReincarnating[i] = true
-			udg_IsUnitAlive[i] = false
-			udg_DeathEvent = 0.50
-			udg_DeathEvent = 0.00
-		
-		udg_CheckDeathInList[i] = false
-	
-	//Empty the list
-	udg_CheckDeathList[0] = 0
-
-public function UnitEventCheckAfterProxy (integer i )
-	if udg_CheckDeathList[0] == 0 
-		TimerStart(udg_CheckDeathTimer, 0.00, false, function UnitEventCheckAfter)
-	
-	if not udg_CheckDeathInList[i] 
-		udg_CheckDeathList[i] = udg_CheckDeathList[0]
-		udg_CheckDeathList[0] = i
-		udg_CheckDeathInList[i] = true
-	
-
-
-public function UnitEventOnUnload ()
-	integer i = udg_UDex
-	GroupRemoveUnit(udg_CargoTransportGroup[GetUnitUserData(udg_CargoTransportUnit[i])], udg_UDexUnits[i])
-	udg_IsUnitBeingUnloaded[i] = true
-	udg_CargoEvent = 0.00
-	udg_CargoEvent = 2.00
-	udg_CargoEvent = 0.00
-	udg_IsUnitBeingUnloaded[i] = false
-	if not IsUnitLoaded(udg_UDexUnits[i]) or IsUnitType(udg_CargoTransportUnit[i], UNIT_TYPE_DEAD) or GetUnitTypeId(udg_CargoTransportUnit[i]) == 0 
-		udg_CargoTransportUnit[i] = null
-	
-
-
-public function UnitEventOnDeath () returns boolean
-	integer pdex = udg_UDex
-	udg_UDex = GetUnitUserData(GetTriggerUnit())
-	if udg_UDex != 0 
-		udg_KillerOfUnit[udg_UDex] = GetKillingUnit() //Added 29 May 2017 for_ GIMLI_2
-		udg_IsUnitAlive[udg_UDex] = false
-		udg_DeathEvent = 0.00
-		udg_DeathEvent = 1.00
-		udg_DeathEvent = 0.00
-		udg_KillerOfUnit[udg_UDex] = null
-		if udg_CargoTransportUnit[udg_UDex] != null 
-			UnitEventOnUnload()
-		
-	
-	udg_UDex = pdex
-	return false
-
-
-public function UnitEventOnOrder () returns boolean
-	integer pdex = udg_UDex
-	unit u = GetFilterUnit()
-	integer i = GetUnitUserData(u)
-	if i > 0 
-		udg_UDex = i
-		if GetUnitAbilityLevel(u, udg_DetectRemoveAbility) == 0 
-			if not udg_IsUnitRemoved[i] 
-				udg_IsUnitRemoved[i] = true
-				udg_IsUnitAlive[i] = false
-				udg_SummonerOfUnit[i] = null
-				
-				//For backwards-compatibility:
-				udg_DeathEvent = 0.00
-				udg_DeathEvent = 3.00
-				udg_DeathEvent = 0.00
-				
-				//Fire deindex event for_ UDex:
-				udg_UnitIndexEvent = 0.00
-				udg_UnitIndexEvent = 2.00
-				udg_UnitIndexEvent = 0.00
-				
-				udg_UDexNext[udg_UDexPrev[i]] = udg_UDexNext[i]
-				udg_UDexPrev[udg_UDexNext[i]] = udg_UDexPrev[i]
-				
-				// Recycle the index for_ later use
-				udg_UDexUnits[i] = null
-				udg_UDexPrev[i] = udg_UDexLastRecycled
-				udg_UDexLastRecycled = i
-				UnitEventDestroyGroup(i)
-			
-		else if not udg_IsUnitAlive[i] 
-			if not IsUnitType(u, UNIT_TYPE_DEAD) 
-				udg_IsUnitAlive[i] = true
-				udg_DeathEvent = 0.00
-				udg_DeathEvent = 2.00
-				udg_DeathEvent = 0.00
-				udg_IsUnitReincarnating[i] = false
-			
-		else if IsUnitType(u, UNIT_TYPE_DEAD) 
-			if udg_IsUnitNew[i] 
-				//This unit was created as a corpse.
-				udg_IsUnitAlive[i] = false
-				udg_DeathEvent = 0.00
-				udg_DeathEvent = 1.00
-				udg_DeathEvent = 0.00
-			else if udg_CargoTransportUnit[i] == null or not IsUnitType(u, UNIT_TYPE_HERO) 
-				//The unit may have just started reincarnating.
-				UnitEventCheckAfterProxy(i)
-			
-		else if GetUnitAbilityLevel(u, udg_DetectTransformAbility) == 0 and not udg_IsUnitTransforming[i] 
-			udg_IsUnitTransforming[i] = true
-			UnitEventCheckAfterProxy(i)  //This block has been updated on 21 July 2017
-		
-		if udg_CargoTransportUnit[i] != null and not udg_IsUnitBeingUnloaded[i] and not IsUnitLoaded(u) or IsUnitType(u, UNIT_TYPE_DEAD) 
-			UnitEventOnUnload()
-		
-		udg_UDex = pdex
-	
-	u = null
-	return false
-
-public function UnitEventOnSummon () returns boolean
-	integer pdex = udg_UDex
-	udg_UDex = GetUnitUserData(GetTriggerUnit())
-	if udg_IsUnitNew[udg_UDex] 
-		udg_SummonerOfUnit[udg_UDex] = GetSummoningUnit()
-		udg_UnitIndexEvent = 0.00
-		udg_UnitIndexEvent = 0.50
-		udg_UnitIndexEvent = 0.00
-	
-	udg_UDex = pdex
-	return false
-
-public function UnitEventOnLoad () returns boolean
-	integer pdex = udg_UDex
-	integer i = GetUnitUserData(GetTriggerUnit())
-	integer index
-	if i != 0 
-		udg_UDex = i
-		if udg_CargoTransportUnit[i] != null 
-			UnitEventOnUnload()
-		
-		//Loaded corpses do not issue an order when unloaded, therefore must
-		//use the enter-region event method taken from_ Jesus4Lyf's Transport.
-		if not udg_IsUnitAlive[i] 
-			SetUnitX(udg_UDexUnits[i], udg_WorldMaxX)
-			SetUnitY(udg_UDexUnits[i], udg_WorldMaxY)
-		
-		
-		udg_CargoTransportUnit[i] = GetTransportUnit()
-		index = GetUnitUserData(udg_CargoTransportUnit[i])
-		if udg_CargoTransportGroup[index] == null 
-			udg_CargoTransportGroup[index] = CreateGroup()
-		
-		GroupAddUnit(udg_CargoTransportGroup[index], udg_UDexUnits[i])
-		udg_CargoEvent = 0.00
-		udg_CargoEvent = 1.00
-		udg_CargoEvent = 0.00
-		udg_UDex = pdex
-	
-	return false
-
-public function UnitEventEnter () returns boolean
-	integer pdex = udg_UDex
-	integer i = udg_UDexLastRecycled
-	unit u = GetFilterUnit()
-	if udg_UnitIndexerEnabled and GetUnitAbilityLevel(u, udg_DetectRemoveAbility) == 0 
-		//Generate a unique integer index for_ this_ unit
-		if i == 0 
-			i = udg_UDexMax + 1
-			udg_UDexMax = i
-		else
-			udg_UDexLastRecycled = udg_UDexPrev[i]
-		
-		//Link index to_ unit, unit to_ index
-		udg_UDexUnits[i] = u
-		SetUnitUserData(u, i)
-		
-		//For backwards-compatibility, add the unit to_ a linked list
-		udg_UDexNext[i] = udg_UDexNext[0]
-		udg_UDexPrev[udg_UDexNext[0]] = i
-		udg_UDexNext[0] = i
-		udg_UDexPrev[i] = 0
-		
-		udg_CheckDeathInList[i] = false
-		
-		UnitAddAbility(u, udg_DetectRemoveAbility)
-		UnitMakeAbilityPermanent(u, true, udg_DetectRemoveAbility)
-		UnitAddAbility(u, udg_DetectTransformAbility)
-		udg_UnitTypeOf[i] = GetUnitTypeId(u)
-		udg_IsUnitNew[i] = true
-		udg_IsUnitAlive[i] = true
-		udg_IsUnitRemoved[i] = false
-		udg_IsUnitReincarnating[i] = false
-		udg_IsUnitPreplaced[i] = udg_IsUnitPreplaced[0] //Added 29 May 2017 for_ Spellbound
-		UnitEventCheckAfterProxy(i)
-		
-		//Fire index event for_ UDex
-		udg_UDex = i
-		udg_UnitIndexEvent = 0.00
-		udg_UnitIndexEvent = 1.00
-		udg_UnitIndexEvent = 0.00
-	else
-		udg_UDex = GetUnitUserData(u)
-		if udg_CargoTransportUnit[udg_UDex] != null and not IsUnitLoaded(u) 
-			//The unit was dead, but has re-entered the map.
-			UnitEventOnUnload()
-		
-	
-	udg_UDex = pdex
-	u = null
-	return false
-
-//===========================================================================
-public function UnitEventInit ()
-	integer i = bj_MAX_PLAYER_SLOTS //update to_ make it_ work with 1.29
-	player p
-	trigger t = CreateTrigger()
-	trigger load = CreateTrigger()
-	trigger death = CreateTrigger()
-	trigger summon = CreateTrigger()
-	rect r = GetWorldBounds()
-	region re = CreateRegion()
-	boolexpr enterB = Filter(function UnitEventEnter)
-	boolexpr orderB = Filter(function UnitEventOnOrder)
-	udg_WorldMaxX = GetRectMaxX(r)
-	udg_WorldMaxY = GetRectMaxY(r)
-	RegionAddRect(re, r)
-	RemoveRect(r)
-	UnitEventDestroyGroup(0)
-	UnitEventDestroyGroup(1)
-	
-	udg_CheckDeathList[0] = 0
-	udg_UnitIndexerEnabled = true
-	TriggerRegisterEnterRegion(CreateTrigger(), re, enterB)
-	TriggerAddCondition(load, Filter(function UnitEventOnLoad))
-	TriggerAddCondition(death, Filter(function UnitEventOnDeath))
-	TriggerAddCondition(summon, Filter(function UnitEventOnSummon))
-	while true
-		i = i - 1
-		p = Player(i)
-		SetPlayerAbilityAvailable(p, udg_DetectRemoveAbility, false)
-		SetPlayerAbilityAvailable(p, udg_DetectTransformAbility, false)
-		TriggerRegisterPlayerUnitEvent(summon, p, EVENT_PLAYER_UNIT_SUMMON, null)
-		TriggerRegisterPlayerUnitEvent(t, p, EVENT_PLAYER_UNIT_ISSUED_ORDER, orderB)
-		TriggerRegisterPlayerUnitEvent(death, p, EVENT_PLAYER_UNIT_DEATH, null)
-		TriggerRegisterPlayerUnitEvent(load, p, EVENT_PLAYER_UNIT_LOADED, null)
-		GroupEnumUnitsOfPlayer(bj_lastCreatedGroup, p, enterB)
-		if i == 0
-			break
-	
-	summon = null
-	death = null
-	load = null
-	re = null
-	enterB = null
-	orderB = null
-	p = null
-	r = null
-	t = null
-
-public function InitTrig_Unit_Event ()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Beast Master Summons

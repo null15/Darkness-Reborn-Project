@@ -1,0 +1,189 @@
+package DruidOverlordRespawn
+import ClosureTimers
+
+rect gg_rct_druid=Rect(- 8224.0, - 1152.0, - 5888.0, 1184.0)
+rect gg_rct_overlord=Rect(- 11488.0, - 1216.0, - 8768.0, 1184.0)
+region druidRegion = CreateRegion()
+region overlordRegion = CreateRegion()
+
+unit druid1
+unit druid2
+unit druid3
+unit druid4
+unit druid5
+unit druid6
+unit druid7
+unit druid8
+unit druid9
+unit druid10
+unit druid11
+unit druid12
+
+unit overlord1
+unit overlord2
+unit overlord3
+unit overlord4
+unit overlord5
+unit overlord6
+unit overlord7
+unit overlord8
+unit overlord9
+unit overlord10
+unit overlord11
+unit overlord12
+
+init
+
+    druid1 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7832.5,-750.9,47.555)
+    druid2 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-6298.5,-764.2,127.169)
+    druid3 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-6294.3,695.0,222.003)
+    druid4 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7822.2,780.4,318.056)
+    druid5 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7789.1,-53.5,358.679)
+    druid6 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-6286.9,-89.2,165.753)
+    druid7 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7031.2,-768.5,91.851)
+    druid8 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7006.7,758.1,275.264)
+    druid9 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-6633.5,367.1,203.337)
+    druid10 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7414.1,351.4,317.575)
+    druid11 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-7381.4,-392.5,64.190)
+    druid12 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258',-6684.1,-407.8,135.025)
+
+    overlord1 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-11029.3,769.6,293.421)
+    overlord2 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-9193.1,705.2,53.241)
+    overlord3 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-10999.5,-733.2,99.616)
+    overlord4 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-9182.1,-802.5,145.771)
+    overlord5 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-11090.3,-16.2,336.478)
+    overlord6 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-9196.8,-38.9,124.732)
+    overlord7 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-10064.9,777.2,209.538)
+    overlord8 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-10086.6,-794.5,94.947)
+    overlord9 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-10592.7,-365.9,99.616)
+    overlord10 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-10584.6,310.5,99.616)
+    overlord11 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-9608.1,365.4,99.616)
+    overlord12 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259',-9667.9,-370.4,99.616)
+
+    RegionAddRect(druidRegion, gg_rct_druid)
+    RegionAddRect(overlordRegion, gg_rct_overlord)
+    druidRespawnInit()
+    overlordDeathInit()
+
+function druidDeath() returns boolean
+    return GetUnitTypeId(GetTriggerUnit()) == 'U258' 
+
+function druidRespawnInit()
+    if IsUnitInRegion(druidRegion, druid1) or IsUnitInRegion(druidRegion, druid2) or IsUnitInRegion(druidRegion, druid3) or IsUnitInRegion(druidRegion, druid4) or IsUnitInRegion(druidRegion, druid5) or IsUnitInRegion(druidRegion, druid6) or IsUnitInRegion(druidRegion, druid7) or IsUnitInRegion(druidRegion, druid8) or IsUnitInRegion(druidRegion, druid9) or IsUnitInRegion(druidRegion, druid10) or IsUnitInRegion(druidRegion, druid11) or IsUnitInRegion(druidRegion, druid12)
+        CreateTrigger()
+        ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
+        ..addCondition(Condition(function druidDeath))
+        ..addAction() ->
+            if GetDyingUnit() == druid1
+                doAfter(5) -> 
+                    druid1 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid1.getX(), druid1.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid2
+                doAfter(5) -> 
+                    druid2 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid2.getX(), druid2.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid3
+                doAfter(5) -> 
+                    druid3 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid3.getX(), druid3.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid4
+                doAfter(5) -> 
+                    druid4 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid4.getX(), druid4.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid5
+                doAfter(5) -> 
+                    druid5 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid5.getX(), druid5.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid6
+                doAfter(5) -> 
+                    druid6 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid6.getX(), druid6.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid7
+                doAfter(5) -> 
+                    druid7 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid7.getX(), druid7.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid8
+                doAfter(5) -> 
+                    druid8 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid8.getX(), druid8.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid9
+                doAfter(5) -> 
+                    druid9 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid9.getX(), druid9.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid10
+                doAfter(5) -> 
+                    druid10 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid10.getX(), druid10.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid11
+                doAfter(5) -> 
+                    druid11 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid11.getX(), druid11.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == druid12
+                doAfter(5) -> 
+                    druid12 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U258', druid12.getX(), druid12.getY(), bj_UNIT_FACING)
+
+
+
+
+
+
+function overlordDeath() returns boolean
+    return GetUnitTypeId(GetTriggerUnit()) == 'U259' 
+
+function overlordDeathInit()
+    if IsUnitInRegion(overlordRegion, overlord1) or IsUnitInRegion(overlordRegion, overlord2) or IsUnitInRegion(overlordRegion, overlord3) or IsUnitInRegion(overlordRegion, overlord4) or IsUnitInRegion(overlordRegion, overlord5) or IsUnitInRegion(overlordRegion, overlord6) or IsUnitInRegion(overlordRegion, overlord7) or IsUnitInRegion(overlordRegion, overlord8) or IsUnitInRegion(overlordRegion, overlord9) or IsUnitInRegion(overlordRegion, overlord10) or IsUnitInRegion(overlordRegion, overlord11) or IsUnitInRegion(overlordRegion, overlord12)
+        CreateTrigger()
+        ..registerAnyUnitEvent(EVENT_PLAYER_UNIT_DEATH)
+        ..addCondition(Condition(function overlordDeath))
+        ..addAction() ->
+            if GetDyingUnit() == overlord1
+                doAfter(5) -> 
+                    overlord1 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord1.getX(), overlord1.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord2
+                doAfter(5) -> 
+                    overlord2 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord2.getX(), overlord2.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord3
+                doAfter(5) -> 
+                    overlord3 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord3.getX(), overlord3.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord4
+                doAfter(5) -> 
+                    overlord4 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord4.getX(), overlord4.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord5
+                doAfter(5) -> 
+                    overlord5 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord5.getX(), overlord5.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord6
+                doAfter(5) -> 
+                    overlord6 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord6.getX(), overlord6.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord7
+                doAfter(5) -> 
+                    overlord7 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord7.getX(), overlord7.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord8
+                doAfter(5) -> 
+                    overlord8 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord8.getX(), overlord8.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord9
+                doAfter(5) -> 
+                    overlord9 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord9.getX(), overlord9.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord10
+                doAfter(5) -> 
+                    overlord10 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord10.getX(), overlord10.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord11
+                doAfter(5) -> 
+                    overlord11 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord11.getX(), overlord11.getY(), bj_UNIT_FACING)
+
+            else if GetDyingUnit() == overlord12
+                doAfter(5) -> 
+                    overlord12 = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U259', overlord12.getX(), overlord12.getY(), bj_UNIT_FACING)
+
+
+
+

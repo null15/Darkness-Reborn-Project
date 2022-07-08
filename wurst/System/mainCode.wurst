@@ -1433,9 +1433,6 @@ trigger gg_trg_RK_BeastMaster_Scaling=null
 trigger gg_trg_RK_Shadow_Hunter_Scaling=null
 trigger gg_trg_RK_DDS=null
 
-boolean RK_DDS_Tracker10Ultil_Enabled = false
-boolean RK_DDS_Tracker12Ultil_Enabled = false
-
 boolean RK_DDS_Demon1_Enabled = true
 boolean RK_DDS_Demon2_Enabled = false
 
@@ -2682,11 +2679,6 @@ public function globalsinit ()
 			break
 		udg_Bannick[i]=""
 		i=i+1
-
-public function RK_DDS_Deal_Damage_Generic (unit u, unit target, real dmg )
-	DisableTrigger(gg_trg_RK_DDS)
-	UnitDamageTarget(u, target, dmg, false, false, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_UNIVERSAL, WEAPON_TYPE_WHOKNOWS)
-	EnableTrigger(gg_trg_RK_DDS)
 
 public function Trig_Q_Mysterious_Magic_Conditions () returns boolean
 	if(not(GetSpellAbilityId()=='A0ZT'))
@@ -28784,11 +28776,12 @@ public function RK_Shadow_Hunter_Scaling_Logic () returns boolean
 	real currentArmr = 0
 	real newArmr = 0
 	
-	if (GetUnitTypeId(caster) != 'H123' and GetUnitTypeId(caster) != 'H123') 
+	if (GetUnitTypeId(caster) != 'O00U' and GetUnitTypeId(caster) != 'O003') 
 		return false
 	
 	if (GetUnitName(spawn) == "Healing Ward") 
 		return false
+	
 	
 	maxHp = I2R(BlzGetUnitMaxHP(spawn))
 	currentDmg = I2R(BlzGetUnitBaseDamage(spawn, 0))
@@ -28799,8 +28792,10 @@ public function RK_Shadow_Hunter_Scaling_Logic () returns boolean
 		newArmr = 0.25 * BlzGetUnitArmor(caster)
 		newDmg = 0.35 * I2R(GetHeroInt(caster, true))
 	
+	
 	if newHp <= 0 
 		return false
+	
 	
 	newHp = newHp + maxHp * 0.04
 	BlzSetUnitMaxHP(spawn, R2I(newHp) * 25)
@@ -28817,10 +28812,15 @@ public function RK_Shadow_Hunter_Scaling_Logic () returns boolean
 	spawn = null
 	return false
 
+
 public function RK_Shadow_Hunter_Scaling_Init ()
 	gg_trg_RK_Shadow_Hunter_Scaling = CreateTrigger()
 	TriggerRegisterAnyUnitEventBJ(gg_trg_RK_Shadow_Hunter_Scaling, EVENT_PLAYER_UNIT_SUMMON)
 	TriggerAddCondition(gg_trg_RK_Shadow_Hunter_Scaling, Condition(function RK_Shadow_Hunter_Scaling_Logic))
+
+
+
+
 
 public function RK_Fire_Mage_Get_Mult (unit u ) returns real
 	return 0.1 * (1 + GetUnitAbilityLevel(u, 'A004') + 4 * GetUnitAbilityLevel(u, 'A0MN'))
@@ -28835,6 +28835,7 @@ public function RK_DDS_Fire_Mage ()
 	
 	if (dmg <= 0) 
 		return
+	
 	
 	// fire mage fire shield return damage
 	if (GetUnitAbilityLevel(target, 'A0E7') > 0) 
@@ -28870,6 +28871,10 @@ public function RK_DDS_Fire_Mage ()
 		SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.00)
 		SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 	
+
+
+
+
 public function RK_DDS_Shadow_Hunter ()
 	unit src = GetEventDamageSource()
 	unit target = GetTriggerUnit()
@@ -28880,8 +28885,9 @@ public function RK_DDS_Shadow_Hunter ()
 	if dmg <= 0 
 		return
 	
-	if (GetUnitTypeId(src) != 'H123' and GetUnitTypeId(src) != 'H123') 
+	if (GetUnitTypeId(src) != 'O00U' and GetUnitTypeId(src) != 'O003') 
 		return
+	
 	
 	lvl = I2R(1 + GetUnitAbilityLevel(src, 'A019'))
 	if (GetUnitAbilityLevel(target, 'B901') > 0) and (lvl > 1) 
@@ -28898,6 +28904,8 @@ public function RK_DDS_Shadow_Hunter ()
 		SetTextTagLifespanBJ(GetLastCreatedTextTag(),1.00)
 		SetTextTagPermanentBJ(GetLastCreatedTextTag(),false)
 	
+
+
 public function RK_DDS_OriginalDDS ()
 	// darkness arrows
 	if (Trig_UnitTake_amage_Agi_Conditions()) 
@@ -28957,15 +28965,25 @@ public function RK_DDS_OriginalDDS ()
 	if (Trig_UnitTake_amagePandaren_Conditions()) 
 		Trig_UnitTake_amagePandaren_Actions()
 	
+	
+
+
+
+
+
 public function RK_DDS_Logic () returns boolean
 	RK_DDS_Fire_Mage()
 	RK_DDS_Shadow_Hunter()
 	RK_DDS_OriginalDDS()
 	return false
 
+
 public function InitTrig_RK_DDS ()
 	gg_trg_RK_DDS = CreateTrigger()
 	TriggerAddCondition(gg_trg_RK_DDS,Condition(function RK_DDS_Logic))
+
+
+
 
 public function InitTrig_RK_Functions ()
 	InitTrig_RK_Tauren_War_Stomp()
@@ -28975,6 +28993,7 @@ public function InitTrig_RK_Functions ()
 	RK_BeastMaster_Scaling_Init()
 	RK_Shadow_Hunter_Scaling_Init()
 	InitTrig_RK_DDS()
+	RK_Troll_Setup()
 
 public function InitCustomTriggers ()
 	InitTrig_Q_Mysterious_Magic()

@@ -2,7 +2,105 @@
 projectName: Darkness Reborn Project
 dependencies:
 - https://github.com/wurstscript/wurstStdlib2
+
 buildMapData:
-  name: "|cFF990000Darkness |cFF99FF99Reborn|r v3.0 X"
-  fileName: "Darkness Reborn v3.0 X"
-  author: '|cFFFF6666DR Community|r'
+  name: "|cFF990000Darkness |cFF99FF99Reborn|r v3.1A"
+  fileName: "Darkness Reborn v3.1A"
+  author: "|cFFFF6666DR Community|r"
+  optionsFlags:
+    hideMinimapPreview: true
+    forcesFixed: true
+    maskedAreasPartiallyVisible: true
+    showWavesOnCliffShores: true
+    showWavesOnRollingShores: true
+    useItemClassificationSystem: true
+  players:
+  - id: 0
+    name: "Player red"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 1
+    name: "Player blue"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 2
+    name: "Player teal"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 3
+    name: "Player purple"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 4
+    name: "Player yellow"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 5
+    name: "Player orange"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 6
+    name: "Player green"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 7
+    name: "Player pink"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 8
+    name: "Player gray"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 9
+    name: "Player lightblue"
+    race: HUMAN
+    controller: USER
+    fixedStartLoc: true
+  - id: 10
+    name: ""
+    race: HUMAN
+    controller: COMPUTER
+    fixedStartLoc: false
+  - id: 11
+    name: "Attacker"
+    race: HUMAN
+    controller: COMPUTER
+    fixedStartLoc: false
+  forces:
+  - name: Defenders
+    playerIds:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    flags:
+      allied: true
+      alliedVictory: true
+      sharedVision: true
+      sharedControl: false
+      sharedControlAdvanced: false
+  - name: Attackers
+    playerIds:
+    - 11
+    flags:
+      allied: true
+      alliedVictory: true
+      sharedVision: true
+      sharedControl: false
+      sharedControlAdvanced: false

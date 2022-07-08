@@ -24,7 +24,7 @@ public function destroyTimerWaves()
     myTimerDialogWaves.destr()
 
     myTimerBoss.startPeriodic(45, null)
-    myTimerDialogBoss.setTitle("Next boss in: ")
+    myTimerDialogBoss.setTitle("Next boss: ")
     myTimerDialogBoss.setTitleColor(255, 255, 0, 0)
     myTimerDialogBoss.display(true)
 
@@ -33,12 +33,12 @@ function destroyStartTimer()
     myTimerDialog.destr()
 
     myTimerWaves.startPeriodic(30, null)
-    myTimerDialogWaves.setTitle("Next wave in: ")
+    myTimerDialogWaves.setTitle("Next wave: ")
     myTimerDialogWaves.setTitleColor(255, 255, 0, 0)
     myTimerDialogWaves.display(true)
 
 function myStartTimer()
     myTimer.start(87, function destroyStartTimer)
-    myTimerDialog.setTitle("Game Starting in: ")
+    myTimerDialog.setTitle("Game Starting: ")
     myTimerDialog.setTitleColor(255, 255, 0, 0)
     myTimerDialog.display(true)

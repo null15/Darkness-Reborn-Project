@@ -24,10 +24,9 @@ rect region006 = Rect(-192.0,-5696.0,256.0,-5248.0)
 
 init
     
-    // SetPlayerName(Player(0), "null#12140")
     addPlayers()
     codeDialogInit()
-        
+
 function addPlayers()
     PLAYER_SET.add(
         PLAYER_NAME_1,
@@ -72,7 +71,7 @@ function codeDialogAct()
 
     buffBox.addButton("Hero: Tracker") ->
         if playerHero[GetTriggerPlayer().getId()] == null
-            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H047', GetRectCenter(region006), bj_UNIT_FACING)
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H130', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)
@@ -81,7 +80,7 @@ function codeDialogAct()
 
     buffBox.addButton("Hero: Thief") ->
         if playerHero[GetTriggerPlayer().getId()] == null
-            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00V', GetRectCenter(region006), bj_UNIT_FACING)
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H131', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)
@@ -90,7 +89,7 @@ function codeDialogAct()
 
     buffBox.addButton("Hero: Pandaren") ->
         if playerHero[GetTriggerPlayer().getId()] == null
-            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'O00Z', GetRectCenter(region006), bj_UNIT_FACING)
+            playerHero[GetTriggerPlayer().getId()] = CreateUnitAtLoc(GetTriggerPlayer(), 'H132', GetRectCenter(region006), bj_UNIT_FACING)
             SetPlayerState(GetTriggerPlayer(), PLAYER_STATE_RESOURCE_LUMBER, 0)
         else
             printTimed("You already have a hero.", 10)

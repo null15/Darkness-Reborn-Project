@@ -21,7 +21,7 @@ function respawnHeroAct()
         heroRespawnDialog[i] = CreateTimerDialog(heroRespawnTimer[i])
 
         heroRespawnTimer[i].start(10, null)
-        heroRespawnDialog[i].setTitle(GetPlayerName(Player(i))+"'s Hero respawn: ")
+        heroRespawnDialog[i].setTitle(GetPlayerName(Player(i))+": ")
 
         heroRespawnDialog[i].setTitleColor(PLAYER_COLORS[i].withAlpha(255))
         heroRespawnDialog[i].display(true)

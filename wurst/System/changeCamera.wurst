@@ -1,11 +1,14 @@
 package changeCamera
 import StringUtils
-
+import ClosureTimers
 camerafield cam
 
 init
     
     changeCameraDistInit()
+    doAfter(0.1) -> 
+        for i = 0 to 9
+            cam.setCameraField(players[i], 2000, 3)
 
 function changeCameraDistInit()
     for i = 0 to 9

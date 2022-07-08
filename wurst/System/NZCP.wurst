@@ -4,8 +4,6 @@ hashtable nzHash = InitHashtable( )
 
 init
 
-	InitNZCP()
-
 function GlobalHandle () returns integer
 	return GetHandleId( nzHash )
 

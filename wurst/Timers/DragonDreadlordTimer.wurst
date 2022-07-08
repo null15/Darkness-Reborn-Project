@@ -3,9 +3,6 @@ package DragonDreadlordTimer
 import ClosureTimers
 import ItemDrops
 
-rect gg_rct_Region_Dreadlord=Rect(7008.0,2656.0,7168.0,2816.0)
-rect gg_rct_Region_Dragon=Rect(9792.0,-1248.0,10112.0,-960.0)
-
 integer array DRAGON_TYPE = []
 integer dragonIndex = 0
 
@@ -25,8 +22,8 @@ init
         dragonSpawn(0)
 
 function spawnDreadlord()
-    let u = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U248', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
-    SetHeroLevelBJ(u,80,false)
+    let u = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U248', GetRectCenter(gg_rct_Region_dreadlordspawn), bj_UNIT_FACING)
+    u.setLevel(80, false)
     CreateTrigger()
     ..registerUnitEvent(u, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -44,8 +41,8 @@ function spawnDreadlord()
         dreadlordTimerDialog.setTitleColor(255, 255, 0, 0)
         dreadlordTimerDialog.display(true)
         doAfter(30) ->
-            let u2 = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U249', GetRectCenter(gg_rct_Region_Dreadlord), bj_UNIT_FACING)
-            SetHeroLevelBJ(u2,80,false)
+            let u2 = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), 'U249', GetRectCenter(gg_rct_Region_dreadlordspawn), bj_UNIT_FACING)
+            u2.setLevel(80, false)
             CreateTrigger()
             ..registerUnitEvent(u2, EVENT_UNIT_DEATH)
             ..addAction() ->
@@ -62,7 +59,8 @@ function spawnDreadlord()
 
 
 function dragonSpawn(int num)
-    let dragon = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), DRAGON_TYPE[num], GetRectCenter(gg_rct_Region_Dragon), bj_UNIT_FACING)
+    let dragon = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE), DRAGON_TYPE[num], GetRectCenter(gg_rct_Region_dragonspawn), bj_UNIT_FACING)
+    dragon.setLevel(70, false)
     dragonIndex = num
     CreateTrigger()
     ..registerUnitEvent(dragon, EVENT_UNIT_DEATH)

@@ -5,10 +5,7 @@ import spawnWave
 
 init
 
-    // changeWave()
-    // changeBosswave()
-
-function changeWave()
+public function changeWave()
     CreateTrigger()
     ..registerPlayerChatEvent(Player(0), "-wave ", false)
     ..addAction() ->
@@ -23,7 +20,7 @@ function changeWave()
             else
                 printTimed("Please assign a value of 20 or below.", 5)
 
-function changeBosswave()
+public function changeBosswave()
     CreateTrigger()
     ..registerPlayerChatEvent(Player(0), "-boss ", false)
     ..addAction() ->

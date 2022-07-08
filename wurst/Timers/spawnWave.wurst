@@ -4,12 +4,6 @@ import ClosureTimers
 import miniBosses
 import gameStartingTimer
 
-rect gg_rct_MidArea=null
-rect gg_rct_Region_leftLane=null
-rect gg_rct_Region_midLane=null
-rect gg_rct_Region_rightLane=null
-rect gg_rct_Region_HomeBase=null
-
 public integer waveId = 0
 public integer bossId = 1
 public integer finalbossId = 1
@@ -30,75 +24,37 @@ unit boss3
 trigger gg_trg_Move_Attack=null
 trigger gg_trg_Move_Attack2=null
 
-public location array udg_AAttackWave
-
+boolean delay = true
+unit enteringUnit
 init
-
-    gg_rct_Region_leftLane=Rect(-4480.0,4896.0,-3584.0,5408.0)
-    gg_rct_Region_midLane=Rect(-576.0,4896.0,576.0,5408.0)
-    gg_rct_Region_rightLane=Rect(3584.0,4800.0,4608.0,5280.0)
-    gg_rct_MidArea=Rect(-128.0,512.0,160.0,704.0)
-    gg_rct_Region_HomeBase=Rect(-192.0,-4224.0,192.0,-3904.0)
 
     waves()
     spawnWave()
-    initTrig_Move_Attack()
-    initTrig_Move_Attack2()
+    initialMoveAttack()
 
-    doPeriodically(0.01) (cbc) ->
-        if (waveId >= 20)
-            destroy cbc
-            doAfter(89.9) ->
-                destroyTimerWaves()
-       
+function moveAttackCond() returns boolean
+    return GetOwningPlayer(GetEnteringUnit()) == Player(11)
 
+function initialMoveAttack()
+    let wavecreeps = CreateRegion()
+    let midlane = CreateRegion()
 
-public function trig_Move_Attack2_Conditions () returns boolean
-    if(GetOwningPlayer(GetEnteringUnit())==Player(11))
-        return true
-    return false
+    wavecreeps.addRect(gg_rct_Region_spawnWaveCreeps)
+    midlane.addRect(gg_rct_Region_midtp2)
 
-public function trig_Move_Attack2_Actions ()
-    let tmpLoc = GetRectCenter(gg_rct_Region_HomeBase)
-    let tmpUnit2 = GetEnteringUnit()
-    if (GetUnitTypeId(tmpUnit2)!='h03L' and GetUnitTypeId(tmpUnit2)!='H03Z' and GetUnitTypeId(tmpUnit2)!='n04P' and GetUnitTypeId(tmpUnit2)!='H007')
-        IssuePointOrderLocBJ(tmpUnit2,"attack",tmpLoc)
-        RemoveLocation(tmpLoc)
-    else
-        IssuePointOrderLocBJ(tmpUnit2,"attack",tmpLoc)
-        RemoveLocation(tmpLoc)
+    CreateTrigger()
+    ..registerEnterRegion(wavecreeps, null)
+    ..addCondition(Condition(function moveAttackCond))
+    ..addAction() ->
+        IssuePointOrderLoc(GetEnteringUnit(), "attack", GetRectCenter(gg_rct_Region_midtp2))
 
-public function initTrig_Move_Attack2 ()
-    gg_trg_Move_Attack2=CreateTrigger()
-    TriggerRegisterEnterRectSimple(gg_trg_Move_Attack2,gg_rct_MidArea)
-    TriggerAddCondition(gg_trg_Move_Attack2,Condition(function trig_Move_Attack2_Conditions))
-    TriggerAddAction(gg_trg_Move_Attack2,function trig_Move_Attack2_Actions)
-
-public function trig_Move_Attack_Conditions () returns boolean
-    if(GetOwningPlayer(GetEnteringUnit())==Player(11))
-        return true
-    return false
-
-public function trig_Move_Attack_Actions ()
-    let tmpLoc = GetRectCenter(gg_rct_MidArea) 
-    let tmpUnit = GetEnteringUnit()
-    if (GetUnitTypeId(tmpUnit)!='h03L' and GetUnitTypeId(tmpUnit)!='H03Z' and GetUnitTypeId(tmpUnit)!='n04P' and GetUnitTypeId(tmpUnit)!='H007')
-        IssuePointOrderLocBJ(tmpUnit,"attack",tmpLoc)  
-        RemoveLocation(tmpLoc)
-    else
-        IssuePointOrderLocBJ(tmpUnit,"attack",tmpLoc)
-        RemoveLocation(tmpLoc)
-
-public function initTrig_Move_Attack ()
-    gg_trg_Move_Attack=CreateTrigger()
-    TriggerRegisterEnterRectSimple(gg_trg_Move_Attack,gg_rct_Region_leftLane)
-    TriggerRegisterEnterRectSimple(gg_trg_Move_Attack,gg_rct_Region_midLane)
-    TriggerRegisterEnterRectSimple(gg_trg_Move_Attack,gg_rct_Region_rightLane)
-    TriggerAddCondition(gg_trg_Move_Attack,Condition(function trig_Move_Attack_Conditions))
-    TriggerAddAction(gg_trg_Move_Attack,function trig_Move_Attack_Actions)
+    CreateTrigger()
+    ..registerEnterRegion(midlane, null)
+    ..addCondition(Condition(function moveAttackCond))
+    ..addAction() ->
+        IssuePointOrderLoc(GetEnteringUnit(), "attack", GetRectCenter(gg_rct_Region_elementsoul))
 
 public function waves()
-    udg_AAttackWave[4]=GetRectCenter(gg_rct_MidArea)
     udg_UnitWave[1]='n02B'
     udg_UnitWave[2]='u00J'
     udg_UnitWave[3]='u00B'
@@ -233,24 +189,24 @@ public function waves()
     udg_FinalBoss[6]='u00Q'
     udg_FinalBoss[7]='u00P'
     udg_FinalBoss[8]='H03N'
-    udg_FinalBoss[9]='H001'
-    udg_FinalBoss[10]='N02A'
-    udg_FinalBoss[11]='O006'
-    udg_FinalBoss[12]='E003'
-    udg_FinalBoss[13]='O00Q'
-    udg_FinalBoss[14]='O002'
-    udg_FinalBoss[15]='O008'
-    udg_FinalBoss[16]='H03Q'
-    udg_FinalBoss[17]='N04D'
-    udg_FinalBoss[19]='U002'
-    udg_FinalBoss[20]='N007'
-    udg_FinalBoss[21]='H005'
-    udg_FinalBoss[22]='E011'
-    udg_FinalBoss[23]='O003'
-    udg_FinalBoss[24]='O00O'
-    udg_FinalBoss[25]='E00M'
-    udg_FinalBoss[26]='H03U'
-    udg_FinalBoss[27]='H03S'
+    udg_FinalBoss[9]='H117'
+    udg_FinalBoss[10]='H115'
+    udg_FinalBoss[11]='H106'
+    udg_FinalBoss[12]='H104'
+    udg_FinalBoss[13]='H105'
+    udg_FinalBoss[14]='H112'
+    udg_FinalBoss[15]='H111'
+    udg_FinalBoss[16]='H110'
+    udg_FinalBoss[17]='H107'
+    udg_FinalBoss[19]='H113'
+    udg_FinalBoss[20]='H116'
+    udg_FinalBoss[21]='H109'
+    udg_FinalBoss[22]='H102'
+    udg_FinalBoss[23]='H123'
+    udg_FinalBoss[24]='H101'
+    udg_FinalBoss[25]='H100'
+    udg_FinalBoss[26]='H125'
+    udg_FinalBoss[27]='H129'
     udg_FinalBoss[28]='H03Y'
     udg_FinalBoss[29]='h03L'
     udg_FinalBoss[30]='H03Z'
@@ -281,8 +237,7 @@ public function lastThreebosses()
         TimerDialogSetTitleColor(timer_eliteBoss_dialog, 255, 255, 0, 0)
 
         DisplayTimedTextToForce(GetPlayersAll(),15,"Elite Boss |cffb46363RA|r has been summoned")
-        boss1 = CreateUnitAtLoc(Player(11), udg_FinalBoss[29], GetRectCenter(gg_rct_Region_midLane), bj_UNIT_FACING)
-        IssuePointOrderLocBJ(boss1,"attack",udg_AAttackWave[4])
+        boss1 = CreateUnitAtLoc(Player(11), udg_FinalBoss[29], GetRectCenter(gg_rct_Region_midSpawnWave), bj_UNIT_FACING)
 
         doAfter(100) ->
 
@@ -292,8 +247,7 @@ public function lastThreebosses()
             TimerDialogSetTitleColor(timer_eliteBoss_dialog, 255, 255, 0, 0)
 
             DisplayTimedTextToForce(GetPlayersAll(),15,"Elite Boss |cffb43939Cronus|r has been summoned")
-            boss2 = CreateUnitAtLoc(Player(11), udg_FinalBoss[30], GetRectCenter(gg_rct_Region_midLane), bj_UNIT_FACING)
-            IssuePointOrderLocBJ(boss2,"attack",udg_AAttackWave[4])
+            boss2 = CreateUnitAtLoc(Player(11), udg_FinalBoss[30], GetRectCenter(gg_rct_Region_midSpawnWave), bj_UNIT_FACING)
 
             doAfter(120) ->
 
@@ -301,8 +255,7 @@ public function lastThreebosses()
                 timer_eliteBoss_dialog.destr()
 
                 DisplayTimedTextToForce(GetPlayersAll(),15,"Elite Boss |cffa81d1dShadow Infernal|r has been summoned")
-                boss3 = CreateUnitAtLoc(Player(11), udg_FinalBoss[31], GetRectCenter(gg_rct_Region_midLane), bj_UNIT_FACING)
-                IssuePointOrderLocBJ(boss3,"attack",udg_AAttackWave[4])
+                boss3 = CreateUnitAtLoc(Player(11), udg_FinalBoss[31], GetRectCenter(gg_rct_Region_midSpawnWave), bj_UNIT_FACING)
 
 
 
@@ -317,13 +270,13 @@ function bossSpawns()
                 destroy cbb
             else
                 DisplayTimedTextToForce(GetPlayersAll(),10,"Boss Wave "+I2S(finalbossId)+" is spawning")
-                let finalBossUnit = CreateUnitAtLoc(Player(11), udg_FinalBoss[finalbossId], GetRectCenter(gg_rct_Region_midLane), bj_UNIT_FACING)
+                let finalBossUnit = CreateUnitAtLoc(Player(11), udg_FinalBoss[finalbossId], GetRectCenter(gg_rct_Region_midSpawnWave), bj_UNIT_FACING)
 
                 if (GetUnitTypeId(finalBossUnit) == 'H03N')
                     SetHeroLevelBJ(finalBossUnit,50,false)
                     UnitAddItemByIdSwapped('I096',finalBossUnit)
                     UnitAddItemByIdSwapped('I08H',finalBossUnit)
-                else if (GetUnitTypeId(finalBossUnit) == 'H001')
+                else if (GetUnitTypeId(finalBossUnit) == 'H117')
                     ModifyHeroStat(bj_HEROSTAT_AGI,finalBossUnit,bj_MODIFYMETHOD_ADD,10000)
                     ModifyHeroStat(bj_HEROSTAT_STR,finalBossUnit,bj_MODIFYMETHOD_ADD,50000)
                     ModifyHeroStat(bj_HEROSTAT_INT,finalBossUnit,bj_MODIFYMETHOD_ADD,50000)
@@ -335,7 +288,7 @@ function bossSpawns()
                     UnitAddItemByIdSwapped('I08H',finalBossUnit)
                     UnitAddItemByIdSwapped('I096',finalBossUnit)
                     DisplayTimedTextToForce(GetPlayersAll(),10, "|cffff2020"+GetUnitName(finalBossUnit)+"|r has spawned!")
-                else if (GetUnitTypeId(finalBossUnit) == 'N02A')
+                else if (GetUnitTypeId(finalBossUnit) == 'H115')
                     ModifyHeroStat(bj_HEROSTAT_AGI,finalBossUnit,bj_MODIFYMETHOD_ADD,20000)
                     ModifyHeroStat(bj_HEROSTAT_STR,finalBossUnit,bj_MODIFYMETHOD_ADD,60000)
                     ModifyHeroStat(bj_HEROSTAT_INT,finalBossUnit,bj_MODIFYMETHOD_ADD,20000)
@@ -346,7 +299,7 @@ function bossSpawns()
                     UnitAddItemByIdSwapped('I08V',finalBossUnit)
                     UnitAddItemByIdSwapped('I08H',finalBossUnit)
                     UnitAddItemByIdSwapped('I096',finalBossUnit)
-                else if (GetUnitTypeId(finalBossUnit) == 'O006')
+                else if (GetUnitTypeId(finalBossUnit) == 'H106')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -368,7 +321,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0RE',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0RG',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A01K',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'E003')
+                else if (GetUnitTypeId(finalBossUnit) == 'H104')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -380,14 +333,14 @@ function bossSpawns()
                     ModifyHeroStat(bj_HEROSTAT_AGI,finalBossUnit,bj_MODIFYMETHOD_ADD,55000)
                     ModifyHeroStat(bj_HEROSTAT_STR,finalBossUnit,bj_MODIFYMETHOD_ADD,130000)
                     ModifyHeroStat(bj_HEROSTAT_INT,finalBossUnit,bj_MODIFYMETHOD_ADD,10000)
-                    IssuePointOrderLocBJ(finalBossUnit,"attack",GetRectCenter(gg_rct_Region_HomeBase))
+                    IssuePointOrderLocBJ(finalBossUnit,"attack",GetRectCenter(gg_rct_Region_elementsoul))
                     UnitAddAbilityBJ('A0D8',finalBossUnit)
                     UnitAddAbilityBJ('A00R',finalBossUnit)
                     UnitAddAbilityBJ('A00T',finalBossUnit)
                     SetUnitAbilityLevelSwapped('A0D8',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A00R',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A00T',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'O00Q')
+                else if (GetUnitTypeId(finalBossUnit) == 'H105')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -403,7 +356,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A07O',finalBossUnit,9)
                     UnitAddAbilityBJ('A07N',finalBossUnit)
                     SetUnitAbilityLevelSwapped('A07N',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'O002')
+                else if (GetUnitTypeId(finalBossUnit) == 'H112')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -425,7 +378,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A01B',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A01E',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A01A',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'O008')
+                else if (GetUnitTypeId(finalBossUnit) == 'H111')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -447,7 +400,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0SE',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0SD',finalBossUnit,4)
                     SetUnitAbilityLevelSwapped('A0SA',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'H03Q')
+                else if (GetUnitTypeId(finalBossUnit) == 'H110')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -463,7 +416,7 @@ function bossSpawns()
                     UnitAddAbilityBJ('A0DZ',finalBossUnit)
                     SetUnitAbilityLevelSwapped('A0DW',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0DZ',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'N04D')
+                else if (GetUnitTypeId(finalBossUnit) == 'H107')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -480,7 +433,7 @@ function bossSpawns()
                     UnitAddAbilityBJ('A00G',finalBossUnit)
                     SetUnitAbilityLevelSwapped('A00P',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A00G',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'U002')
+                else if (GetUnitTypeId(finalBossUnit) == 'H113')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -503,7 +456,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0R6',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0RD',finalBossUnit,4)
 
-                else if (GetUnitTypeId(finalBossUnit) == 'N007')
+                else if (GetUnitTypeId(finalBossUnit) == 'H116')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -521,7 +474,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0RS',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0RL',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0RI',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'H005')
+                else if (GetUnitTypeId(finalBossUnit) == 'H109')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -543,7 +496,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0CH',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0AP',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0F1',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'E011')
+                else if (GetUnitTypeId(finalBossUnit) == 'H102')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I09P',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -562,7 +515,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0RW',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0TK',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A008',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'O003')
+                else if (GetUnitTypeId(finalBossUnit) == 'H123')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I0CD',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -579,7 +532,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0M9',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0M3',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0MI',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'O00O')
+                else if (GetUnitTypeId(finalBossUnit) == 'H101')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I05M',finalBossUnit)
                     UnitUseItem(finalBossUnit,GetLastCreatedItem())
@@ -599,7 +552,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A0DC',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0GM',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0GJ',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'E00M')
+                else if (GetUnitTypeId(finalBossUnit) == 'H100')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I0BN',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -616,7 +569,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A08A',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A087',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A08C',finalBossUnit,9)
-                else if (GetUnitTypeId(finalBossUnit) == 'H03U')
+                else if (GetUnitTypeId(finalBossUnit) == 'H125')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I0A7',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -633,7 +586,7 @@ function bossSpawns()
                     SetUnitAbilityLevelSwapped('A000',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0AI',finalBossUnit,9)
                     SetUnitAbilityLevelSwapped('A0AN',finalBossUnit,4)
-                else if (GetUnitTypeId(finalBossUnit) == 'H03S')
+                else if (GetUnitTypeId(finalBossUnit) == 'H129')
                     SetHeroLevelBJ(finalBossUnit,150,false)
                     UnitAddItemByIdSwapped('I0A7',finalBossUnit)
                     UnitAddItemByIdSwapped('I088',finalBossUnit)
@@ -659,42 +612,34 @@ function bossSpawns()
                     UnitAddItemByIdSwapped('I0AK',finalBossUnit)
                     UnitAddItemByIdSwapped('I096',finalBossUnit)
 
-                IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
                 finalbossId = finalbossId +1
-
-
-
-
-
-
 
 public function spawnWave()
 
     doPeriodically(90.1) (cba) ->
+
         waveId = waveId + 1
+
+        if (waveId >= 20)
+            doAfter(89.9) ->
+                destroyTimerWaves()
+
         if (waveId <= 20)
 
             DisplayTimedTextToForce(GetPlayersAll(),10,"Wave "+I2S(waveId)+" is spawning")
-            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
-            GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-            GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightLane),bj_UNIT_FACING)
-            GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
+            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftSpawnWave),bj_UNIT_FACING)
+            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+            CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightSpawnWave),bj_UNIT_FACING)
+            
             doAfter(30) ->
-                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
-                GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-                GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightLane),bj_UNIT_FACING)
-                GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
+                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftSpawnWave),bj_UNIT_FACING)
+                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+                CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightSpawnWave),bj_UNIT_FACING)
+                
                 doAfter(30) ->
-                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
-                    GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-                    GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
-                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightLane),bj_UNIT_FACING)
-                    GroupPointOrderLocBJ(GetLastCreatedGroup(),"attack",udg_AAttackWave[4])
+                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_leftSpawnWave),bj_UNIT_FACING)
+                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+                    CreateNUnitsAtLoc(12,udg_UnitWave[waveId],Player(11),GetRectCenter(gg_rct_Region_rightSpawnWave),bj_UNIT_FACING)
 
                     lowNum = calcLow(waveId)
                     highNum = calcHigh(waveId)
@@ -704,25 +649,18 @@ public function spawnWave()
 
                     if (waveId % 5 == 0)
                         doAfter(2) ->
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_rightLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_leftSpawnWave),bj_UNIT_FACING)
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_rightSpawnWave),bj_UNIT_FACING)
+                            
                             doAfter(5) ->
-
-                                CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowBoss, highBoss)],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-                                IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
+                                CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowBoss, highBoss)],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+                                
                     else
                         doAfter(2) ->
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_leftLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_midLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
-                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_rightLane),bj_UNIT_FACING)
-                            IssuePointOrderLocBJ(GetLastCreatedUnit(),"attack",udg_AAttackWave[4])
-
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_leftSpawnWave),bj_UNIT_FACING)
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_midSpawnWave),bj_UNIT_FACING)
+                            CreateNUnitsAtLoc(1,udg_BossWave[GetRandomInt(lowNum, highNum)],Player(11),GetRectCenter(gg_rct_Region_rightSpawnWave),bj_UNIT_FACING)
         else
             destroy cba
             bossSpawns()

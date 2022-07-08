@@ -2,16 +2,11 @@ package CreepRespawn
 
 import ClosureTimers
 
-rect rightCreepsRect = Rect(2528.0, - 7104.0, 11296.0, - 3200.0)
-rect leftCreeps = Rect(- 11456.0, - 7232.0, - 2528.0, - 1472.0)
-
-region rightCreepsRegion = CreateRegion()
 region leftCreepsRegion = CreateRegion()
 
 init
 
-    RegionAddRect(rightCreepsRegion, rightCreepsRect)
-    RegionAddRect(leftCreepsRegion, leftCreeps)
+    RegionAddRect(leftCreepsRegion, gg_rct_Region_leftSideCreeps)
     reviveCreepsInit()
 
 function reviveCreepsAct()

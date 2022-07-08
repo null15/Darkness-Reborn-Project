@@ -2,8 +2,8 @@ package RightSideCreeps
 
 import ClosureTimers
 
-unit betrayFootman
-unit captain
+unit militiaSpawn
+unit footman
 unit nerubianQueen
 unit hydralisk
 unit furbolgUrsaWarrior
@@ -17,8 +17,8 @@ unit snappySnapdragonIII
 
 init
 
-    betrayFootman()
-    captain()
+    militiaSpawn()
+    footman()
     nerubianQueen()
     hydralisk()
     furbolgUrsaWarrior()
@@ -28,24 +28,25 @@ init
     iceRevenantRespawn()
     snappySnapdragonI()
 
-function betrayFootman()
-    betrayFootman = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U211',3171.0,-3410.3,312.285)
+function militiaSpawn()
+    militiaSpawn = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U211', GetRectCenter(gg_rct_Region_militiaspawn), bj_UNIT_FACING)
     CreateTrigger()
-    ..registerUnitEvent(betrayFootman, EVENT_UNIT_DEATH)
+    ..registerUnitEvent(militiaSpawn, EVENT_UNIT_DEATH)
     ..addAction() ->
         doAfter(1) ->
-            betrayFootman()
+            militiaSpawn()
 
-function captain()
-    captain = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U210',5018.1,-3412.7,192.333)
+function footman()
+    footman = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U210',GetRectCenter(gg_rct_Region_footmanspawn), bj_UNIT_FACING)
     CreateTrigger()
-    ..registerUnitEvent(captain, EVENT_UNIT_DEATH)
+    ..registerUnitEvent(footman, EVENT_UNIT_DEATH)
     ..addAction() ->
         doAfter(1) ->
-            captain()
+            footman()
 
 function nerubianQueen()
-    nerubianQueen = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U200',3207.3,-6654.7,83.334)
+    nerubianQueen = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U200',GetRectCenter(gg_rct_Region_nerubspawn), bj_UNIT_FACING)
+    nerubianQueen.setLevel(25, false)
     CreateTrigger()
     ..registerUnitEvent(nerubianQueen, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -53,7 +54,8 @@ function nerubianQueen()
             nerubianQueen()
 
 function hydralisk()
-    hydralisk = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U201',4992.6,-6626.5,34.366)
+    hydralisk = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U201',GetRectCenter(gg_rct_Region_hydraliskspawn), bj_UNIT_FACING)
+    hydralisk.setLevel(25, false)
     CreateTrigger()
     ..registerUnitEvent(hydralisk, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -61,7 +63,8 @@ function hydralisk()
             hydralisk()
 
 function furbolgUrsaWarrior()
-    furbolgUrsaWarrior = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U202',6854.7,-6696.6,220.579)
+    furbolgUrsaWarrior = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U202',GetRectCenter(gg_rct_Region_ursaspawn), bj_UNIT_FACING)
+    furbolgUrsaWarrior.setLevel(42, false)
     CreateTrigger()
     ..registerUnitEvent(furbolgUrsaWarrior, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -69,7 +72,8 @@ function furbolgUrsaWarrior()
             furbolgUrsaWarrior()
 
 function fleshGolem()
-    fleshGolem = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U203',8565.8,-6675.9,187.257)
+    fleshGolem = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U203',GetRectCenter(gg_rct_Region_fleshgolemspawn), bj_UNIT_FACING)
+    fleshGolem.setLevel(42, false)
     CreateTrigger()
     ..registerUnitEvent(fleshGolem, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -77,7 +81,8 @@ function fleshGolem()
             fleshGolem()
 
 function doomGuard()
-    doomGuard = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U204',10504.7,-6665.4,35.004)
+    doomGuard = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U204',GetRectCenter(gg_rct_Region_doomguardspawn), bj_UNIT_FACING)
+    doomGuard.setLevel(45, false)
     CreateTrigger()
     ..registerUnitEvent(doomGuard, EVENT_UNIT_DEATH)
     ..addAction() ->
@@ -85,28 +90,32 @@ function doomGuard()
             doomGuard()
 
 function scaryScream()
-    scaryScream = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U209',6764.5,-3471.8,278.607)
+    scaryScream = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U209',GetRectCenter(gg_rct_Region_scaryscreamspawn), bj_UNIT_FACING)
+    scaryScream.setLevel(70, false)
     CreateTrigger()
     ..registerUnitEvent(scaryScream, EVENT_UNIT_DEATH)
     ..addAction() ->
-        doAfter(5) ->
+        doAfter(15) ->
             scaryScream()
 
 function iceRevenantRespawn()
-    iceRev = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U205',10657.4,-3533.2,350.277)
+    iceRev = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U205',GetRectCenter(gg_rct_Region_icerevenantspawn), bj_UNIT_FACING)
+    iceRev.setLevel(50, false)
     SetUnitState(iceRev,UNIT_STATE_MANA,0)
     CreateTrigger()
     ..registerUnitEvent(iceRev, EVENT_UNIT_DEATH)
     ..addAction() ->
-        doAfter(5) ->
+        doAfter(15) ->
             iceRevenantRespawn()
 
 function snappySnapdragonIII()
-    snappySnapdragonIII = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U208',8599.3,-3502.0,27.522)
+    snappySnapdragonIII = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U208',GetRectCenter(gg_rct_Region_snapdragonspawn), bj_UNIT_FACING)
+    snappySnapdragonIII.setLevel(99, false)
     SetUnitState(snappySnapdragonIII,UNIT_STATE_MANA,0)
 
 function snappySnapdragonII()
-    snappySnapdragonII = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U207',8599.3,-3502.0,27.522)
+    snappySnapdragonII = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U207',GetRectCenter(gg_rct_Region_snapdragonspawn), bj_UNIT_FACING)
+    snappySnapdragonII.setLevel(99, false)
     SetUnitState(snappySnapdragonII,UNIT_STATE_MANA,0)
     CreateTrigger()
     ..registerUnitEvent(snappySnapdragonII, EVENT_UNIT_DEATH)
@@ -115,7 +124,8 @@ function snappySnapdragonII()
             snappySnapdragonIII()    
 
 function snappySnapdragonI()
-    snappySnapdragonI = CreateUnit(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U206',8599.3,-3502.0,27.522)
+    snappySnapdragonI = CreateUnitAtLoc(Player(PLAYER_NEUTRAL_AGGRESSIVE),'U206',GetRectCenter(gg_rct_Region_snapdragonspawn), bj_UNIT_FACING)
+    snappySnapdragonI.setLevel(99, false)
     SetUnitState(snappySnapdragonI,UNIT_STATE_MANA,0)
     CreateTrigger()
     ..registerUnitEvent(snappySnapdragonI, EVENT_UNIT_DEATH)

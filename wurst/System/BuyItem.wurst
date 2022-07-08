@@ -1,5 +1,4 @@
 package BuyItem
-import ClosureTimers
 
 unit B101_BASIC1
 unit B102_BASIC2
@@ -23,6 +22,7 @@ unit B116_ELITECREEPS
 unit B117_BOSSES
 
 unit array shops
+unit array creepShops
 
 init
 
@@ -60,8 +60,16 @@ init
     shops[10] = B112_GEM
     shops[11] = B113_CRYSTAL
 
-    // for i = 0 to 11
-    //     shops[i].suspendXp(true)
+    creepShops[0] = B114_EASYCREEPS
+    creepShops[1] = B115_HARDCREEPS
+    creepShops[2] = B116_ELITECREEPS
+    creepShops[3] = B117_BOSSES
+
+    for i = 0 to 3
+        creepShops[i].suspendXp(true)
+
+    for i = 0 to 11
+        shops[i].suspendXp(true)
             
 public function buysItem()
     for i = 0 to 11

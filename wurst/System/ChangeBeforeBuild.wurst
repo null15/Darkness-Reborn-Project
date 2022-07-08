@@ -1,0 +1,12 @@
+package ChangeBeforeBuild
+
+// import NZCP
+// import ChangeWaveOnPrompt
+
+
+init
+
+    // SetPlayerName(Player(0), "null#12140")
+    // InitNZCP()
+    // changeWave()
+    // changeBosswave()
